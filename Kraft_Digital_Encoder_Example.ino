@@ -16,6 +16,12 @@ struct StickData {
   int elevator;
   int throttle;
   int rudder;
+  
+  // Digital Trim Offsets
+  int trim_ail = 0;
+  int trim_ele = 0;
+  int trim_rud = 0;
+
   float plane_vbatt = 12.6; // Mock telemetry
   int link_quality = 100;    // Mock telemetry
 };
@@ -40,30 +46,44 @@ void setup() {
     while (1);
   }
 
+  // Setup Trim Pins (Internal Pullups)
+  pinMode(10, INPUT_PULLUP); // Trim Ail Left
+  pinMode(11, INPUT_PULLUP); // Trim Ail Right
+
   Serial.println("Kraft Digital Encoder Initialized.");
 }
 
 // --- Main Loop ---
 void loop() {
   // 1. Read Sticks (16-bit)
-  sticks.aileron  = ads.readADC_SingleEnded(0);
-  sticks.elevator = ads.readADC_SingleEnded(1);
-  sticks.throttle = ads.readADC_SingleEnded(2);
-  sticks.rudder   = ads.readADC_SingleEnded(3);
+  int raw_ail = ads.readADC_SingleEnded(0);
+  int raw_ele = ads.readADC_SingleEnded(1);
+  int raw_thr = ads.readADC_SingleEnded(2);
+  int raw_rud = ads.readADC_SingleEnded(3);
 
-  // 2. Map values (Example mapping to 1000-2000us)
-  // Note: Calibration logic would go here
-  int ail_mapped = map(sticks.aileron, 0, 26000, 1000, 2000);
-  int ele_mapped = map(sticks.elevator, 0, 26000, 1000, 2000);
+  // 2. Handle Digital Trims (Example for Aileron)
+  if (digitalRead(10) == LOW) { sticks.trim_ail--; delay(100); }
+  if (digitalRead(11) == LOW) { sticks.trim_ail++; delay(100); }
 
-  // 3. Update Display
+  // 3. Apply Trims & Map values (Example mapping to 1000-2000us)
+  // Calibration: 0 to 26000 is a typical range for a 3.3V pot on ADS1115
+  int ail_mapped = map(raw_ail, 0, 26000, 1000, 2000) + sticks.trim_ail;
+  int ele_mapped = map(raw_ele, 0, 26000, 1000, 2000) + sticks.trim_ele;
+  int rud_mapped = map(raw_rud, 0, 26000, 1000, 2000) + sticks.trim_rud;
+  int thr_mapped = map(raw_thr, 0, 26000, 1000, 2000); // Usually no trim on throttle
+
+  // Constrain outputs to legal RC range
+  ail_mapped = constrain(ail_mapped, 800, 2200);
+  ele_mapped = constrain(ele_mapped, 800, 2200);
+
+  // 4. Update Display
   u8g2.clearBuffer();
   drawStatusHeader();
   drawStickMonitor(ail_mapped, ele_mapped);
   drawTelemetryFooter();
   u8g2.sendBuffer();
 
-  delay(20); // ~50Hz refresh rate
+  delay(10); // ~100Hz loop rate
 }
 
 // --- UI Drawing Functions ---
@@ -80,11 +100,11 @@ void drawStatusHeader() {
 }
 
 void drawStickMonitor(int ail, int ele) {
-  // Draw Throttle Bar (Simple Example)
+  // Draw Throttle Bar
   u8g2.drawStr(0, 30, "THR:");
   u8g2.drawFrame(30, 22, 40, 10);
-  int thr_w = map(sticks.throttle, 0, 26000, 0, 38);
-  u8g2.drawBox(31, 23, thr_w, 8);
+  int thr_w = map(ads.readADC_SingleEnded(2), 0, 26000, 0, 38);
+  u8g2.drawBox(31, 23, constrain(thr_w, 0, 38), 8);
 
   // Draw Ail/Ele Crosshair
   int cx = 100;
@@ -96,7 +116,12 @@ void drawStickMonitor(int ail, int ele) {
   // Draw stick position dot
   int dot_x = map(ail, 1000, 2000, cx-14, cx+14);
   int dot_y = map(ele, 1000, 2000, cy+14, cy-14);
-  u8g2.drawDisc(dot_x, dot_y, 2);
+  u8g2.drawDisc(constrain(dot_x, cx-14, cx+14), constrain(dot_y, cy-14, cy+14), 2);
+
+  // Show Trim Values
+  u8g2.setFont(u8g2_font_5x7_tf);
+  u8g2.setCursor(0, 45);
+  u8g2.print("T-AIL: "); u8g2.print(sticks.trim_ail);
 }
 
 void drawTelemetryFooter() {
@@ -106,3 +131,4 @@ void drawTelemetryFooter() {
   u8g2.print("PLANE: "); u8g2.print(sticks.plane_vbatt); u8g2.print("V");
   u8g2.drawStr(75, 62, "RATE: HIGH");
 }
+
