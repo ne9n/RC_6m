@@ -23,8 +23,9 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [RX_BOM.md](file:///RX_Hardware/RX_BOM.md): Parts list for building the receiver.
 
 ### 💻 Software
-- [Kraft_Digital_Encoder_Example.ino](file:///Software/Kraft_Digital_Encoder_Example.ino): Arduino/C++ code for the transmitter.
 - [Kraft_7_Firmware_Skeleton.ino](file:///Software/Kraft_7_Firmware_Skeleton.ino): Full code structure for dual ADC and Si5351 handler.
+- [Firmware_Protocol_Spec.md](file:///Software/Firmware_Protocol_Spec.md): GFSK modulation logic and 50MHz packet structure.
+- [Si5351_GFSK_Driver.cpp](file:///Software/Si5351_GFSK_Driver.cpp): C++ driver for frequency-pulling modulation.
 - [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and SDR logic.
 - [Trim_Implementation.md](file:///Software/Trim_Implementation.md): Digital trim logic and math.
 - [Project_Recommendations.md](file:///Software/Project_Recommendations.md): ELRS and SimpleTX project guidance.
