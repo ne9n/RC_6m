@@ -1,29 +1,36 @@
-# RC_6m: 6-Meter Ham Band RC Transceiver
+# 6-Meter Ham Band RC Transceiver Project
 
-A modern, high-performance digital radio control and telemetry system designed for the **50MHz (6-meter)** Amateur Radio band.
+This project focuses on designing and building a modern 50MHz (6-meter) radio control system using the amateur radio bands. It features a high-power 1W transmitter and a high-sensitivity receiver, integrated into a vintage Kraft 7 transmitter case with a modern digital encoder.
 
-## Overview
+## 📁 Repository Structure
 
-This project aims to provide a long-range, 2-way digital link for radio control airplanes using the amateur 6m band. Unlike traditional 2.4GHz systems, the 50MHz band offers superior signal propagation and penetration, making it ideal for specialized long-range or high-reliability RC applications.
+### 📡 TX Hardware
+- [PA_Design_Details.md](file:///TX_Hardware/PA_Design_Details.md): 1W RD01MUS2 Power Amplifier design and filtering.
+- [Digital_Encoder_Conversion.md](file:///TX_Hardware/Digital_Encoder_Conversion.md): Strategy for upgrading the Kraft 7 to digital.
+- [Kraft_Digital_UI_Wiring.md](file:///TX_Hardware/Kraft_Digital_UI_Wiring.md): Pinout for ESP32, ADS1115, and OLED.
 
-## Key Features
+### 🛩️ RX Hardware
+- [RX_Design_Details.md](file:///RX_Hardware/RX_Design_Details.md): Front-end LNA, Mixer, and 10.7MHz IF stage.
+- [Receiver_Servo_Design.md](file:///RX_Hardware/Receiver_Servo_Design.md): Servo bus wiring and MCU integration.
 
-- **Frequency Band**: 50.0 – 54.0 MHz (Amateur Radio 6m).
-- **Architecture**: Discrete RF design using the **Si5351A** frequency synthesizer and **SA612** mixer.
-- **Modulation**: GFSK (Gaussian Frequency Shift Keying) for high spectral efficiency.
-- **TX Power**: 1 Watt Ground Station (TX) / ~25mW Airplane Telemetry (RX).
-- **2-Way Communication**: Integrated control and telemetry link.
-- **Modern Logic**: Compatible with **ExpressLRS (ELRS)** packet structures.
+### 💻 Software
+- [Kraft_Digital_Encoder_Example.ino](file:///Software/Kraft_Digital_Encoder_Example.ino): Arduino/C++ code for the transmitter.
+- [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and SDR logic.
+- [Trim_Implementation.md](file:///Software/Trim_Implementation.md): Digital trim logic and math.
+- [Project_Recommendations.md](file:///Software/Project_Recommendations.md): ELRS and SimpleTX project guidance.
 
-## Documentation
-
-For a detailed technical breakdown, including the block diagram, parts list, and RF architecture, see:
-- [6m Ham RC Transceiver Design](6m_ham_rc_transceiver_design.md)
-
-## Requirements
-
-> [!IMPORTANT]
-> **Amateur Radio License Required**: Operation on the 50MHz band requires a valid Amateur Radio license (e.g., Technician class or higher in the US).
+### 📜 System Documentation
+- [6m_ham_rc_transceiver_design.md](file:///System_Docs/6m_ham_rc_transceiver_design.md): System architecture and block diagrams.
+- [Initial_BOM.md](file:///System_Docs/Initial_BOM.md): Complete parts list for ordering.
+- [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
 
 ---
-*Created by Antigravity AI for ne9n.*
+
+## 🛠️ Project Goals
+1.  **2-Way Communication**: Telemetry feedback (Battery, RSSI) from plane to transmitter.
+2.  **High Power**: 1W output for superior range and reliability on the 50MHz band.
+3.  **Modern Digital Link**: Moving away from old analog PPM to a robust GFSK digital protocol (ELRS-inspired).
+4.  **Vintage Aesthetic**: Preserving the classic feel of the Kraft 7 transmitter while providing modern performance.
+
+---
+*Maintained by ne9n.*
