@@ -27,7 +27,10 @@ This list contains the core components required to build one 50MHz high-sensitiv
 | :--- | :--- | :--- | :--- |
 | **Servo Headers** | 0.1" (2.54mm) | 3-pin Male Headers (Breakaway) | 8 |
 | **Bulk Cap** | 470 uF | Electrolytic (Servo Rail Buffer) | 1 |
+| **LDO VCC** | 10 uF | 0805 X7R (LDO Input/Output) | 2 | |
 | **RF Capacitors** | 100 pF | 0603 C0G/NP0 (RF Coupling) | 5 |
+| **Protection** | SS14 | Schottky Diode (Reverse Polarity) | 1 | |
+| **Power Filter** | 10 uH | 0805 Power Inductor (LC Filter) | 1 | |
 | **Decoupling Caps**| 0.1 uF | 0603 X7R (Digital Bypassing) | 10 |
 
 ## 4. Total Cost Estimate

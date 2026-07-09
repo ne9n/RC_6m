@@ -56,6 +56,17 @@ graph LR
 | 5 | SDA | ESP32 GPIO 8 | I2C Data |
 | 6 | CLK0 | To LT5560 Pin 7 | LO Output |
 
+### 2.4 Power Supply (3.3V Regulator)
+**IC: AP2112K-3.3 (SOT-23-5)**
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | VIN | From Servo 5V (via SS14 Diode) | LC Filtered |
+| 2 | GND | Ground Plane | |
+| 3 | EN | Connect to VIN | Always On |
+| 4 | NC | Not Connected | |
+| 5 | VOUT | 3.3V Logic Rail | Decouple 10uF |
+
 ---
 
 ## 3. Passive Component Values (50MHz)
