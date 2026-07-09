@@ -14,6 +14,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Receiver_Servo_Design.md](file:///RX_Hardware/Receiver_Servo_Design.md): Servo bus wiring and MCU integration.
 - [RX_PCB_Design_Guide.md](file:///RX_Hardware/RX_PCB_Design_Guide.md): Physical layout, grounding, and stackup for the RX board.
 - [RX_Schematic_Blueprint.md](file:///RX_Hardware/RX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad schematic entry.
+- [RX_BOM.md](file:///RX_Hardware/RX_BOM.md): Parts list for building the receiver.
 
 ### 💻 Software
 - [Kraft_Digital_Encoder_Example.ino](file:///Software/Kraft_Digital_Encoder_Example.ino): Arduino/C++ code for the transmitter.
