@@ -11,6 +11,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [TX_Schematic_Blueprint.md](file:///TX_Hardware/TX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad TX entry.
 - [TX_BOM.md](file:///TX_Hardware/TX_BOM.md): Parts list for building the transmitter.
 - [Analog_Wiring_Harness.md](file:///TX_Hardware/Analog_Wiring_Harness.md): Physical wiring for Kraft sticks and auxiliary pots.
+- [Case_Modification_Guide.md](file:///TX_Hardware/Case_Modification_Guide.md): Cutting, mounting, and mechanical integration for the Kraft case.
 - [Battery_Management_Design.md](file:///TX_Hardware/Battery_Management_Design.md): LiPo conversion and USB-C charging for the Kraft case.
 
 ### 🛩️ RX Hardware
@@ -22,6 +23,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 
 ### 💻 Software
 - [Kraft_Digital_Encoder_Example.ino](file:///Software/Kraft_Digital_Encoder_Example.ino): Arduino/C++ code for the transmitter.
+- [Kraft_7_Firmware_Skeleton.ino](file:///Software/Kraft_7_Firmware_Skeleton.ino): Full code structure for dual ADC and Si5351 handler.
 - [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and SDR logic.
 - [Trim_Implementation.md](file:///Software/Trim_Implementation.md): Digital trim logic and math.
 - [Project_Recommendations.md](file:///Software/Project_Recommendations.md): ELRS and SimpleTX project guidance.
@@ -32,6 +34,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Initial_BOM.md](file:///System_Docs/Initial_BOM.md): Complete parts list for ordering.
 - [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
 - [PCB_Footprint_Guide.md](file:///System_Docs/PCB_Footprint_Guide.md): SMT footprints and assembly instructions.
+- [RF_Range_Analysis.md](file:///System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
 
 ---
 
