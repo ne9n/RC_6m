@@ -36,6 +36,10 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
 - [PCB_Footprint_Guide.md](file:///System_Docs/PCB_Footprint_Guide.md): SMT footprints and assembly instructions.
 - [RF_Range_Analysis.md](file:///System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
+- **KiCad Projects**:
+    - [RX_50MHz_SDR.net](file:///KiCad_Projects/RX_50MHz_SDR/RX_50MHz_SDR.net): Ready-to-import Netlist for Receiver.
+    - [TX_50MHz_1W.net](file:///KiCad_Projects/TX_50MHz_1W/TX_50MHz_1W.net): Ready-to-import Netlist for Transmitter.
+    - [KiCad_Import_Instructions.md](file:///KiCad_Projects/KiCad_Import_Instructions.md): Step-by-step guide to building the boards.
 
 ---
 
