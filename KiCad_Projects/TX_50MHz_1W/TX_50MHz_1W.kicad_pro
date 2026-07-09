@@ -1,0 +1,30 @@
+{
+  "board": {
+    "design_settings": {
+      "grid_origin": [
+        0,
+        0
+      ]
+    }
+  },
+  "meta": {
+    "filename": "TX_50MHz_1W.kicad_pro",
+    "version": 1
+  },
+  "pcbnew": {
+    "last_paths": {
+      "netlist": "TX_50MHz_1W.net"
+    }
+  },
+  "schematic": {
+    "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
+      "default_line_thickness": 0.1524,
+      "default_text_size": 1.27,
+      "field_names": [],
+      "pin_symbol_size": 0.0,
+      "text_offset": 0.1524
+    }
+  }
+}
