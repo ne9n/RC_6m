@@ -8,6 +8,8 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [PA_Design_Details.md](file:///TX_Hardware/PA_Design_Details.md): 1W RD01MUS2 Power Amplifier design and filtering.
 - [Digital_Encoder_Conversion.md](file:///TX_Hardware/Digital_Encoder_Conversion.md): Strategy for upgrading the Kraft 7 to digital.
 - [Kraft_Digital_UI_Wiring.md](file:///TX_Hardware/Kraft_Digital_UI_Wiring.md): Pinout for ESP32, ADS1115, and OLED.
+- [TX_Schematic_Blueprint.md](file:///TX_Hardware/TX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad TX entry.
+- [TX_BOM.md](file:///TX_Hardware/TX_BOM.md): Parts list for building the transmitter.
 
 ### 🛩️ RX Hardware
 - [RX_Design_Details.md](file:///RX_Hardware/RX_Design_Details.md): Front-end LNA, Mixer, and 10.7MHz IF stage.
