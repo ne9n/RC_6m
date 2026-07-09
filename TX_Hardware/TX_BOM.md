@@ -28,7 +28,9 @@ This list contains the core components for the 1W Kraft 7 digital conversion.
 | :--- | :--- | :--- | :--- |
 | **Buck Converter** | MP1584EN | 7-12V to 5V Step Down Module | 1 |
 | **SMA Connector** | SMA-KWE | Right Angle PCB Mount SMA | 1 |
-| **Stick Connectors**| JST-XH 3-Pin | 2.54mm Header & Socket | 7 |
+| **Stick Connectors**| JST-XH 3-Pin | 2.54mm Header & Socket (J1-J7) | 7 |
+| **Power Connector** | JST-VH or XT30| High-current Battery Input (J8) | 1 |
+| **Logic Connectors**| JST-XH 2/4-Pin | 2.54mm (J9 for Power, J10 for OLED) | 2 |
 | **Antenna** | 50MHz Whip | Base-loaded or telescopic whip | 1 |
 
 ## 4. Total Cost Estimate

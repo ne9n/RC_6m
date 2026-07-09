@@ -75,6 +75,28 @@ graph LR
 | 2 | Wiper | To ADC AINx |
 | 3 | GND | Analog Ground |
 
+### 2.6 Power & Utility Connectors (J8 - J10)
+
+**J8: Battery Input (2-Pin JST-VH or XT30)**
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | V_BATT | From Kraft Power Switch | 7.4V - 9.6V |
+| 2 | GND | System Ground | |
+
+**J9: 5V Logic Power (2-Pin JST-XH)**
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | 5V_IN | From Buck Converter Out | Powers ESP32 Vin |
+| 2 | GND | System Ground | |
+
+**J10: I2C Expansion / OLED (4-Pin JST-XH)**
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | VCC | 3.3V Logic | |
+| 2 | GND | Ground | |
+| 3 | SCL | ESP32 GPIO 9 | |
+| 4 | SDA | ESP32 GPIO 8 | |
+
 ---
 
 ## 3. Power Amplifier Biasing & Matching
