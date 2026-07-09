@@ -10,6 +10,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Kraft_Digital_UI_Wiring.md](file:///TX_Hardware/Kraft_Digital_UI_Wiring.md): Pinout for ESP32, ADS1115, and OLED.
 - [TX_Schematic_Blueprint.md](file:///TX_Hardware/TX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad TX entry.
 - [TX_BOM.md](file:///TX_Hardware/TX_BOM.md): Parts list for building the transmitter.
+- [Battery_Management_Design.md](file:///TX_Hardware/Battery_Management_Design.md): LiPo conversion and USB-C charging for the Kraft case.
 
 ### 🛩️ RX Hardware
 - [RX_Design_Details.md](file:///RX_Hardware/RX_Design_Details.md): Front-end LNA, Mixer, and 10.7MHz IF stage.
@@ -23,11 +24,13 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and SDR logic.
 - [Trim_Implementation.md](file:///Software/Trim_Implementation.md): Digital trim logic and math.
 - [Project_Recommendations.md](file:///Software/Project_Recommendations.md): ELRS and SimpleTX project guidance.
+- [Telemetry_Protocol_Design.md](file:///Software/Telemetry_Protocol_Design.md): 2-way 50MHz data packet definition.
 
 ### 📜 System Documentation
 - [6m_ham_rc_transceiver_design.md](file:///System_Docs/6m_ham_rc_transceiver_design.md): System architecture and block diagrams.
 - [Initial_BOM.md](file:///System_Docs/Initial_BOM.md): Complete parts list for ordering.
 - [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
+- [PCB_Footprint_Guide.md](file:///System_Docs/PCB_Footprint_Guide.md): SMT footprints and assembly instructions.
 
 ---
 
