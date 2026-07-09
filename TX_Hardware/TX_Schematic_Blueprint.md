@@ -1,5 +1,8 @@
 # 50MHz Transmitter: KiCad Schematic Blueprint
 
+## Visual Schematic Reference
+![TX Schematic Reference](file:///TX_Hardware/TX_Schematic_Reference.png)
+
 This document provides a detailed pin-to-pin mapping for the 1W 50MHz transmitter conversion for the Kraft 7 radio.
 
 ## 1. Functional Block Diagram

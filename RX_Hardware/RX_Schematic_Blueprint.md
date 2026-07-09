@@ -1,6 +1,7 @@
 # 50MHz Receiver: KiCad Schematic Blueprint
 
-This document provides a detailed pin-to-pin "Netlist" and component values to serve as a starting point for your KiCad schematic entry.
+## Visual Schematic Reference
+![RX Schematic Reference](file:///RX_Hardware/RX_Schematic_Reference.png)
 
 ## 1. Functional Block Diagram
 
