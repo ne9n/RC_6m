@@ -10,6 +10,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Kraft_Digital_UI_Wiring.md](file:///TX_Hardware/Kraft_Digital_UI_Wiring.md): Pinout for ESP32, ADS1115, and OLED.
 - [TX_Schematic_Blueprint.md](file:///TX_Hardware/TX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad TX entry.
 - [TX_BOM.md](file:///TX_Hardware/TX_BOM.md): Parts list for building the transmitter.
+- [Analog_Wiring_Harness.md](file:///TX_Hardware/Analog_Wiring_Harness.md): Physical wiring for Kraft sticks and auxiliary pots.
 - [Battery_Management_Design.md](file:///TX_Hardware/Battery_Management_Design.md): LiPo conversion and USB-C charging for the Kraft case.
 
 ### 🛩️ RX Hardware

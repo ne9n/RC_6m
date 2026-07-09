@@ -43,21 +43,37 @@ graph LR
 | 2 | Source | Ground Plane | Thermal Tab |
 | 3 | Drain | To LPF (via RFC) | Power feed 7.2V-9.6V |
 
-### 2.3 Precision ADC
-**IC: ADS1115 (VSSOP-10)**
+### 2.3 Precision ADC (Main Sticks)
+**IC: ADS1115 (VSSOP-10) - Address 0x48**
 
 | Pin | Name | Connection | Note |
 | :--- | :--- | :--- | :--- |
-| 1 | ADDR | GND | Sets I2C Address |
-| 2 | ALRT | NC | |
-| 3 | GND | GND | |
-| 4 | AIN0 | Stick: Aileron | Wiper of 5k Pot |
-| 5 | AIN1 | Stick: Elevator | Wiper of 5k Pot |
-| 6 | AIN2 | Stick: Throttle | Wiper of 5k Pot |
-| 7 | AIN3 | Stick: Rudder | Wiper of 5k Pot |
+| 1 | ADDR | GND | Sets I2C Address 0x48 |
+| 4 | AIN0 | [J1] Pin 2 | Aileron Wiper |
+| 5 | AIN1 | [J2] Pin 2 | Elevator Wiper |
+| 6 | AIN2 | [J3] Pin 2 | Throttle Wiper |
+| 7 | AIN3 | [J4] Pin 2 | Rudder Wiper |
 | 8 | VDD | 3.3V | |
-| 9 | SDA | ESP32 GPIO 8 | I2C Bus |
-| 10 | SCL | ESP32 GPIO 9 | I2C Bus |
+
+### 2.4 Precision ADC (Aux Channels)
+**IC: ADS1115 (VSSOP-10) - Address 0x49**
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | ADDR | VDD | Sets I2C Address 0x49 |
+| 4 | AIN0 | [J5] Pin 2 | Aux Channel 5 |
+| 5 | AIN1 | [J6] Pin 2 | Aux Channel 6 |
+| 6 | AIN2 | [J7] Pin 2 | Aux Channel 7 |
+| 7 | AIN3 | Voltage Divider | Battery Monitoring |
+
+### 2.5 Analog Connectors (J1 - J7)
+**Type: 3-Pin JST-XH 2.54mm**
+
+| Pin | Name | Connection |
+| :--- | :--- | :--- |
+| 1 | VCC | 3.3V Analog Bus |
+| 2 | Wiper | To ADC AINx |
+| 3 | GND | Analog Ground |
 
 ---
 
