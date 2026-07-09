@@ -31,6 +31,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Telemetry_Protocol_Design.md](file:///Software/Telemetry_Protocol_Design.md): 2-way 50MHz data packet definition.
 
 ### 📜 System Documentation
+- [System_Requirements.md](file:///System_Docs/System_Requirements.md): High-level project specifications and architectural goals.
 - [6m_ham_rc_transceiver_design.md](file:///System_Docs/6m_ham_rc_transceiver_design.md): System architecture and block diagrams.
 - [Initial_BOM.md](file:///System_Docs/Initial_BOM.md): Complete parts list for ordering.
 - [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
