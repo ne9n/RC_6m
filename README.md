@@ -40,6 +40,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [RF_Range_Analysis.md](file:///System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
 - **Datasheets**:
     - [SPF5043Z.pdf](file:///C:/radio/System_Docs/Datasheets/SPF5043Z.pdf): High-performance GaAs pHEMT MMIC LNA (50-4000 MHz).
+    - [Murata_SFE_10.7_Reference.md](file:///C:/radio/System_Docs/Datasheets/Murata_SFE_10.7_Reference.md): Technical specs for the 10.7MHz IF Ceramic Filter.
 - **KiCad Projects**:
     - [TX_50MHz_1W.kicad_sch](file:///C:/radio/KiCad_Projects/TX_50MHz_1W/TX_50MHz_1W.kicad_sch): Main Transmitter Schematic.
     - [RX_50MHz_SDR.kicad_sch](file:///C:/radio/KiCad_Projects/RX_50MHz_SDR/RX_50MHz_SDR.kicad_sch): Main Receiver Schematic.
