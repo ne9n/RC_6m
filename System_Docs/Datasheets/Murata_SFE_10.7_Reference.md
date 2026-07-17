@@ -15,6 +15,8 @@ This document provides the technical specifications for the 10.7 MHz ceramic IF 
 
 ## 2. Physical Dimensions & Pinout
 **Package Type**: Through-Hole Ceramic (Standard 3-pin)
+- **Lead Pitch**: **2.5 mm** (between Pin 1-2 and 2-3)
+- **KiCad Footprint**: `Filter:Filter_Ceramic_Murata_SFE_7.0x7.0mm_P2.50mm`
 
 ```text
       _______

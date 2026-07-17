@@ -486,7 +486,9 @@
   },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "radio"
+    ]
   },
   "meta": {
     "filename": "rx_n.kicad_pro",
