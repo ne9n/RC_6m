@@ -14,8 +14,14 @@ graph LR
     ESP -- I2C --> SI[Si5351A]
     ESP -- I2C --> OLED[SH1106 Display]
     SI -- CLK0 --> PA[RD01MUS2 1W PA]
-    PA --> LPF[7-Pole LPF]
-    LPF --> ANT[Antenna]
+    PA --> SW[BGS12PL6 T/R Switch]
+    SW <--> LPF[7-Pole LPF]
+    LPF <--> ANT[Antenna]
+    SW -- RX Path --> LNA[SPF5043Z LNA]
+    LNA --> MIX[LT5560 Mixer]
+    SI -- CLK1 --> MIX
+    MIX --> IF[10.7MHz IF Filter]
+    IF --> ESP
 ```
 
 ---
@@ -41,9 +47,32 @@ graph LR
 | :--- | :--- | :--- | :--- |
 | 1 | Gate | From Si5351A CLK0 | Match for 50 Ohm |
 | 2 | Source | Ground Plane | Thermal Tab |
-| 3 | Drain | To LPF (via RFC) | Power feed 7.2V-9.6V |
+| 3 | Drain | To Switch RF1 (via RFC) | Power feed 7.2V-9.6V |
 
-### 2.3 Precision ADC (Main Sticks)
+### 2.3 RF T/R Switch
+**IC: BGS12PL6 (TSLP-6)**
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | RF2 | To Telemetry LNA Input | RX Path (Telemetry) |
+| 2 | GND | Ground Plane | |
+| 3 | RF1 | From PA Output (Drain) | TX Path (Control) |
+| 4 | CTRL | ESP32 GPIO (TR_SW) | High = TX, Low = RX |
+| 5 | ANT | To LPF Input | Shared Port |
+| 6 | VDD | 3.3V Rail | Decouple with 0.1uF |
+
+### 2.4 Telemetry Receiver Stage
+**ICs: SPF5043Z (LNA) & LT5560 (Mixer)**
+
+| Stage | Component | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| **LNA In** | SPF5043Z Pin 1| From Switch RF2 | 50MHz Input |
+| **Mixer RF**| LT5560 Pin 1 | From LNA Output | |
+| **Mixer LO**| LT5560 Pin 7 | From Si5351A CLK1 | Local Oscillator |
+| **Mixer IF**| LT5560 Pin 5 | To 10.7MHz Filter | IF Output |
+| **Filter Out**| 10.7MHz SFE | To ESP32 ADC | |
+
+### 2.5 Precision ADC (Main Sticks)
 **IC: ADS1115 (VSSOP-10) - Address 0x48**
 
 | Pin | Name | Connection | Note |
@@ -55,7 +84,7 @@ graph LR
 | 7 | AIN3 | [J4] Pin 2 | Rudder Wiper |
 | 8 | VDD | 3.3V | |
 
-### 2.4 Precision ADC (Aux Channels)
+### 2.6 Precision ADC (Aux Channels)
 **IC: ADS1115 (VSSOP-10) - Address 0x49**
 
 | Pin | Name | Connection | Note |
@@ -66,7 +95,7 @@ graph LR
 | 6 | AIN2 | [J7] Pin 2 | Aux Channel 7 |
 | 7 | AIN3 | Voltage Divider | Battery Monitoring |
 
-### 2.5 Analog Connectors (J1 - J7)
+### 2.7 Analog Connectors (J1 - J7)
 **Type: 3-Pin JST-XH 2.54mm**
 
 | Pin | Name | Connection |
@@ -75,7 +104,7 @@ graph LR
 | 2 | Wiper | To ADC AINx |
 | 3 | GND | Analog Ground |
 
-### 2.6 Power & Utility Connectors (J8 - J10)
+### 2.8 Power & Utility Connectors (J8 - J10)
 
 **J8: Battery Input (2-Pin JST-VH or XT30)**
 | Pin | Name | Connection | Note |
