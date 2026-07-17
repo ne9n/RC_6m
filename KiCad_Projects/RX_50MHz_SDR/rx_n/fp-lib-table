@@ -1,0 +1,3 @@
+﻿(fp_lib_table
+  (lib (name "Kraft6M")(type "KiCad")(uri "${KIPRJMOD}/../../KiCad_Libraries/Kraft6M.pretty")(options "")(descr ""))
+)
