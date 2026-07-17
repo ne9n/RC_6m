@@ -8,13 +8,13 @@ This document maps the BOM components to the exact KiCad library footprint names
 | :--- | :--- | :--- |
 | **ESP32-S3-WROOM-1** | `RF_Module:ESP32-S3-WROOM-1-N8` | Standard Espressif Module |
 | **Si5351A-B-GT** | `Package_SO:MSOP-10_3x3mm_P0.5mm` | 10-pin MSOP |
-| **RD01MUS2** | `Package_TO_SOT_SMD:SOT-89-3` | Center pad is RF Ground/Heat Sink |
-| **ADS1115IDGSR** | `Package_SO:VSSOP-10_3x3mm_P0.5mm` | |
+| **RD01MUS2** | `Kraft6M:RD01MUS2` | Center pad is RF Ground/Heat Sink |
+| **ADS1115IDGSR** | `Kraft6M:ADS1115` | |
 | **1.3" OLED (SH1106)** | `Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical` | 4-pin I2C header |
 | **26MHz Crystal** | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` | Standard 3.2x2.5mm SMD |
-| **Inductors (0805)** | `Inductor_SMD:L_0805_2012Metric` | |
-| **Capacitors (0805)** | `Capacitor_SMD:C_0805_2012Metric` | |
-| **RF Choke (1206)** | `Inductor_SMD:L_1206_3216Metric` | |
+| **Inductors (180nH)** | `Kraft6M:L_180nH_0805` | Specific for 50MHz LPF |
+| **Capacitors (120/220pF)**| `Kraft6M:C_120pF_0805` / `C_220pF_0805` | Specific for 50MHz LPF |
+| **RF Choke (1.0uH)** | `Kraft6M:L_1.0uH_1206` | High-current bias tee |
 | **SMA (Edge Mount)** | `Connector_Coaxial:SMA_Amphenol_132289_EdgeMount` | For 1.6mm PCB |
 | **JST-XH (3-pin)** | `Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical` | |
 
@@ -25,13 +25,13 @@ This document maps the BOM components to the exact KiCad library footprint names
 | Component | KiCad Library Footprint | Note |
 | :--- | :--- | :--- |
 | **ESP32-S3-WROOM-1** | `RF_Module:ESP32-S3-WROOM-1-N8` | |
-| **LT5560 Mixer** | `Package_SON:DFN-8-1EP_2x2mm_P0.5mm_EP0.6x1.0mm` | 2x2mm DFN-8 |
-| **SPF5043Z LNA** | `Package_TO_SOT_SMD:SOT-343_SC-70-4` | Or use `ul_SPF5043Z` custom lib |
-| **IF Filter (10.7MHz)**| `Filter:Filter_Ceramic_Murata_SFE_7.0x7.0mm_P2.50mm` | 2.5mm Lead Pitch |
+| **LT5560 Mixer** | `Kraft6M:LT5560` | 2x2mm DFN-8 |
+| **SPF5043Z LNA** | `Kraft6M:SPF5043Z` | |
+| **IF Filter (10.7MHz)**| `Kraft6M:SFE10.7` | Murata SFE Series |
 | **AP2112K-3.3** | `Package_TO_SOT_SMD:SOT-23-5` | |
-| **Inductors (0603)** | `Inductor_SMD:L_0603_1608Metric` | Used for matching |
-| **Capacitors (0603)** | `Capacitor_SMD:C_0603_1608Metric` | Used for RF path |
-| **Bulk Cap (470uF)** | `Capacitor_THT:CP_Radial_D8.0mm_P3.50mm` | Electrolytic |
+| **Inductors (Match)** | `Kraft6M:L_220nH_0603` | Specific for LNA match |
+| **Capacitors (Match)** | `Kraft6M:C_100pF_0603` | Specific for RF path |
+| **Bulk Cap (470uF)** | `Kraft6M:C_470uF_Radial` | Electrolytic |
 | **SS14 Diode** | `Diode_SMD:D_SMA` | |
 | **Servo Headers** | `Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical` | |
 
