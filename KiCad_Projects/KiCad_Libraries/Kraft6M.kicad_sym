@@ -79,7 +79,7 @@
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type none))
       )
-      (circle (at 1.651 0) (radius 2.794)
+      (circle (center 1.651 0) (radius 2.794)
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type none))
       )
@@ -118,7 +118,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "LT5560_0_1"
-      (rectangle (at -7.62 10.16) (at 7.62 -12.7)
+      (rectangle (start -7.62 10.16) (end 7.62 -12.7)
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type background))
       )
@@ -171,7 +171,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "SPF5043Z_0_1"
-      (rectangle (at -5.08 5.08) (at 5.08 -5.08)
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08)
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type background))
       )
@@ -204,7 +204,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "ADS1115_0_1"
-      (rectangle (at -7.62 12.7) (at 7.62 -12.7)
+      (rectangle (start -7.62 12.7) (end 7.62 -12.7)
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type background))
       )
@@ -261,7 +261,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "SFE10.7_0_1"
-      (rectangle (at -5.08 3.81) (at 5.08 -3.81)
+      (rectangle (start -5.08 3.81) (end 5.08 -3.81)
         (stroke (width 0.254) (type default) (color 0 0 0 0))
         (fill (type background))
       )
