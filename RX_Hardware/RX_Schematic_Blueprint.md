@@ -7,25 +7,42 @@
 
 ```mermaid
 graph LR
-    ANT[Antenna] --> LNA_MATCH[Input Match]
+    ANT[Antenna] --> SW[BGS12PL6 T/R Switch]
+    SW -- RX Path --> LNA_MATCH[Input Match]
     LNA_MATCH --> LNA[SPF5043Z]
     LNA --> BPF[50MHz BPF]
     BPF --> MIX[LT5560 Mixer]
     LO[Si5351A CLK0] --> MIX
+    SW -- TX Path --> TELEM_DRIVE[Si5351A CLK1]
     MIX --> IF_FILT[10.7MHz Filter]
     IF_FILT --> ADC[ESP32 ADC]
+    BATT[Flight Battery] --> INA[INA219 Sensor]
+    INA --> ESC[To ESC]
+    INA -- I2C --> ESP[ESP32 MCU]
 ```
 
 ---
 
 ## 2. Component Netlist (Pin-to-Pin)
 
-### 2.1 RF Front-End (LNA)
+### 2.1 RF Switch (T/R Switch)
+**IC: BGS12PL6 (TSLP-6)**
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | RF2 | To Si5351A CLK1 (via 100pF) | Telemetry TX Path |
+| 2 | GND | Ground Plane | |
+| 3 | RF1 | To LNA Match Input | Control RX Path |
+| 4 | CTRL | ESP32 GPIO (TR_SW) | High = TX, Low = RX |
+| 5 | ANT | To Antenna Header | 50 Ohm Port |
+| 6 | VDD | 3.3V Rail | Decouple with 0.1uF |
+
+### 2.2 RF Front-End (LNA)
 **IC: SPF5043Z (SOT-343)**
 
 | Pin | Name | Connection | Note |
 | :--- | :--- | :--- | :--- |
-| 1 | RFin | To Antenna (via 100pF Cap) | 50 Ohm Trace |
+| 1 | RFin | From Switch RF1 (via 100pF) | 50 Ohm Trace |
 | 2 | GND | Ground Plane | Use multiple vias |
 | 3 | RFout/VCC | To Mixer (via 100pF Cap + RFC) | Power fed via Inductor |
 | 4 | GND | Ground Plane | |
@@ -44,7 +61,7 @@ graph LR
 | 7 | LO+ | From Si5351A CLK0 | Local Oscillator |
 | 8 | LO- | AC Ground (100pF to GND) | |
 
-### 2.3 Synthesizer
+### 2.4 Synthesizer
 **IC: Si5351A (MSOP-10)**
 
 | Pin | Name | Connection | Note |
@@ -55,8 +72,23 @@ graph LR
 | 4 | SCL | ESP32 GPIO 9 | I2C Clock |
 | 5 | SDA | ESP32 GPIO 8 | I2C Data |
 | 6 | CLK0 | To LT5560 Pin 7 | LO Output |
+| 7 | CLK1 | To BGS12 Pin 1 (via 100pF) | Telemetry TX Output |
 
-### 2.4 Power Supply (3.3V Regulator)
+### 2.5 Telemetry Sensor
+**IC: INA219 (SOT-23-8)**
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | IN+ | Main Battery Positive | Source |
+| 2 | IN- | ESC Positive Lead | Load |
+| 3 | GND | System Ground | |
+| 4 | VS | 3.3V Rail | |
+| 5 | SCL | I2C Clock (Bus) | |
+| 6 | SDA | I2C Data (Bus) | |
+| 7 | A0 | GND | Address 0x40 |
+| 8 | A1 | GND | |
+
+### 2.6 Power Supply (3.3V Regulator)
 **IC: AP2112K-3.3 (SOT-23-5)**
 
 | Pin | Name | Connection | Note |

@@ -9,8 +9,10 @@ This list contains the core components required to build one 50MHz high-sensitiv
 | **MCU** | ESP32-S3-WROOM-1 | ESP32-S3 Module (Dual-core, 16MB Flash) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N16R8/15970929) |
 | **Active Mixer** | LT5560EDD#PBF | Active Mixer (Modern SA612 replacement) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/analog-devices-inc/LT5560EDD-PBF/1590059) |
 | **LNA** | SPF5043Z | Low Noise MMIC Amplifier (0.8dB NF) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/qorvo/SPF5043Z/4694406) |
-| **Synthesizer** | Si5351A-B-GT | I2C Clock Generator (Local Oscillator) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/skyworks-solutions-inc/SI5351A-B-GT/3847847) |
+| **Synthesizer** | Si5351A-B-GT | I2C Clock Generator (LO + Telemetry) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/skyworks-solutions-inc/SI5351A-B-GT/3847847) |
 | **Regulator** | AP2112K-3.3TRG1 | 3.3V 600mA LDO Regulator | 1 | [DigiKey](https://www.digikey.com/en/products/detail/diodes-incorporated/AP2112K-3-3TRG1/4470746) |
+| **RF Switch** | BGS12PL6 | SPDT T/R Switch (Telemetry) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/infineon-technologies/BGS12PL6E6327XTSA1/2056263) |
+| **Current Sensor**| INA219AIDCNR | I2C Current/Power Monitor (Telemetry) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/texas-instruments/INA219AIDCNR/2135017) |
 
 ## 2. RF & Frequency Components
 

@@ -12,7 +12,8 @@ This is the initial parts list for the 50MHz digital RC link. It uses modern, ac
 | U4 | [SPF5043Z](https://www.digikey.com/en/products/detail/qorvo/SPF5043Z/4836657) | Qorvo | Low Noise MMIC Amplifier (LNA) | $2.00 |
 | U5 | [BGS12PL6E6327XTSA1](https://www.digikey.com/en/products/detail/infineon-technologies/BGS12PL6E6327XTSA1/2353386) | Infineon | SPDT RF Switch | $0.80 |
 | U6 | [ESP32-S3-WROOM-1](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8/15970878) | Espressif | Ground Station MCU (WiFi/BT) | $4.00 |
-| U7 | [STM32L412KBT6](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32L412KBT6/10321703) | ST Micro | Airplane RX MCU (Ultra-Low Power) | $3.50 |
+| U7 | [ESP32-S3-WROOM-1](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8/15970878) | Espressif | Airplane RX MCU (Unified with TX) | $4.00 |
+| U8 | [INA219AIDCNR](https://www.digikey.com/en/products/detail/texas-instruments/INA219AIDCNR/2135017) | TI | I2C Current/Power Monitor (Telemetry) | $2.50 |
 | Y1 | [ECS-260-18-33-JGN-TR](https://www.digikey.com/en/products/detail/ecs-inc/ECS-260-18-33-JGN-TR/825413) | ECS Inc. | 26MHz TCXO / Crystal (Frequency Ref) | $1.00 |
 
 ## 2. Filters & Passives
@@ -35,7 +36,7 @@ This is the initial parts list for the 50MHz digital RC link. It uses modern, ac
 
 ---
 
-### Total Estimated Prototype Cost (Silicon Only): ~$30.00 USD
+### Total Estimated Prototype Cost (Silicon Only): ~$35.00 USD
 
 > [!NOTE]
 > The **LT5560** is used in this BOM as a modern, high-performance replacement for the obsolete SA612. It requires an external LO from the Si5351A but offers significantly better dynamic range and lower noise.

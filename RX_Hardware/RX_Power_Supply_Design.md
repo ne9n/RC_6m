@@ -19,6 +19,9 @@ graph LR
     LDO --> RF[RF Stages: LNA, Mixer, Synth]
     LDO --> MCU[ESP32-S3]
     SERVO --- SERVOS[Servos: Ail, Ele, Thr, Rud]
+    BATT[Flight Battery] --> INA[INA219 Sensor]
+    INA --> ESC[To ESC]
+    INA -- I2C --> MCU
 ```
 
 ---
@@ -51,13 +54,23 @@ RC connectors can sometimes be plugged in backwards.
 
 ---
 
-## 6. Wiring Summary
+## 6. Telemetry Monitoring (INA219)
+To send battery status back to the ground station, an **INA219 I2C sensor** is placed in-line with the main flight battery.
+- **V_BATT Monitoring**: Measures the 2S-4S LiPo voltage.
+- **Current Monitoring**: Measures the total current draw of the propulsion system.
+- **Interface**: Connects to the ESP32-S3 via the same I2C bus as the Si5351A.
+
+---
+
+## 7. Wiring Summary
 
 | Point | Connection | Purpose |
 | :--- | :--- | :--- |
 | **Servo Rail (+)** | To Diode Anode | Main Power In |
 | **Diode Cathode** | To LC Filter In | Protected Power |
 | **LDO Vout** | To ESP32 & RF VCC | Clean 3.3V |
+| **INA219 IN+** | To Battery (+) | Current Sensing In |
+| **INA219 IN-** | To ESC (+) | Current Sensing Out |
 | **Common GND** | Ground Plane | Return Path |
 
 ---
