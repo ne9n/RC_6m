@@ -35,9 +35,10 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [System_Requirements.md](file:///System_Docs/System_Requirements.md): High-level project specifications and architectural goals.
 - [6m_ham_rc_transceiver_design.md](file:///System_Docs/6m_ham_rc_transceiver_design.md): System architecture and block diagrams.
 - [Initial_BOM.md](file:///System_Docs/Initial_BOM.md): Complete parts list for ordering.
-- [PCB_Layout_Strategy.md](file:///System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
-- [PCB_Footprint_Guide.md](file:///System_Docs/PCB_Footprint_Guide.md): SMT footprints and assembly instructions.
-- [RF_Range_Analysis.md](file:///System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
+- [PCB_Layout_Strategy.md](file:///C:/radio/System_Docs/PCB_Layout_Strategy.md): RF grounding and isolation rules.
+- [PCB_Footprint_Guide.md](file:///C:/radio/System_Docs/PCB_Footprint_Guide.md): SMT footprints and assembly instructions.
+- [PCB_Footprint_Mapping.md](file:///C:/radio/System_Docs/PCB_Footprint_Mapping.md): KiCad library mapping for all BOM parts.
+- [RF_Range_Analysis.md](file:///C:/radio/System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
 - **Datasheets**:
     - [SPF5043Z.pdf](file:///C:/radio/System_Docs/Datasheets/SPF5043Z.pdf): High-performance GaAs pHEMT MMIC LNA (50-4000 MHz).
     - [Murata_SFE_10.7_Reference.md](file:///C:/radio/System_Docs/Datasheets/Murata_SFE_10.7_Reference.md): Technical specs for the 10.7MHz IF Ceramic Filter.
