@@ -510,13 +510,14 @@
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
+        "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
       }
     ],
     "meta": {
-      "version": 4
+      "version": 5
     },
     "net_colors": null,
     "netclass_assignments": null,
@@ -659,7 +660,7 @@
       {
         "filename": "rx_n.kicad_sch",
         "name": "rx_n",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "9fb55f60-e02e-49ad-b98a-22b581e311e6"
       }
     ],
     "used_designators": "",
@@ -668,7 +669,7 @@
   "sheets": [
     [
       "9fb55f60-e02e-49ad-b98a-22b581e311e6",
-      "Root"
+      "rx_n"
     ]
   ],
   "text_variables": {},

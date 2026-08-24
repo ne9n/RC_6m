@@ -428,7 +428,163 @@
 			)
 		)
 	)
-	(sheet_instances
+		(symbol
+		(lib_id "Kraft6M:BGS12PL6")
+		(at 200 150 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a5dc2f7f-9b88-4495-ad2a-683d0c2571f9")
+		(property "Reference" "U?"
+			(at 200 140 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "BGS12PL6"
+			(at 200 160 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 200 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" ""
+			(at 200 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 200 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(instances
+			(project "TX_50MHz_1W"
+				(path "/d09f74c9-7d1d-1ed1-03a7-fa9af5797810"
+					(reference "U?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kraft6M:SPF5043Z")
+		(at 220 150 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "751ca7cc-1c5e-4e75-b37f-3ab1ee6d4b1a")
+		(property "Reference" "U?"
+			(at 220 140 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SPF5043Z"
+			(at 220 160 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 220 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" ""
+			(at 220 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 220 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(instances
+			(project "TX_50MHz_1W"
+				(path "/d09f74c9-7d1d-1ed1-03a7-fa9af5797810"
+					(reference "U?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kraft6M:LT5560")
+		(at 240 150 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "989d8f92-e3eb-4110-8678-6bf0b9371f76")
+		(property "Reference" "U?"
+			(at 240 140 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "LT5560"
+			(at 240 160 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 240 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" ""
+			(at 240 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 240 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(instances
+			(project "TX_50MHz_1W"
+				(path "/d09f74c9-7d1d-1ed1-03a7-fa9af5797810"
+					(reference "U?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kraft6M:10.7MHz_Filter")
+		(at 260 150 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fcfcd35e-9fca-48e1-8b61-2f55757f4b49")
+		(property "Reference" "FL?"
+			(at 260 140 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10.7MHz_Filter"
+			(at 260 160 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 260 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" ""
+			(at 260 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 260 150 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(instances
+			(project "TX_50MHz_1W"
+				(path "/d09f74c9-7d1d-1ed1-03a7-fa9af5797810"
+					(reference "FL?")
+					(unit 1)
+				)
+			)
+		)
+	)
+(sheet_instances
 		(path "/"
 			(page "1")
 		)
