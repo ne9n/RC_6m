@@ -716,7 +716,7 @@
 				(pin input line
 					(at 10.16 -12.7 180)
 					(length 2.54)
-					(name "IO4_ADC_IN"
+					(name "IO4"
 						(effects
 							(font
 								(size 1 1)
@@ -734,7 +734,7 @@
 				(pin output line
 					(at -10.16 -5.08 0)
 					(length 2.54)
-					(name "IO5_SERVO2_ELE"
+					(name "IO5"
 						(effects
 							(font
 								(size 1 1)
@@ -752,7 +752,7 @@
 				(pin output line
 					(at -10.16 -7.62 0)
 					(length 2.54)
-					(name "IO6_SERVO3_THR"
+					(name "IO6"
 						(effects
 							(font
 								(size 1 1)
@@ -770,7 +770,7 @@
 				(pin output line
 					(at -10.16 -10.16 0)
 					(length 2.54)
-					(name "IO7_SERVO4_RUD"
+					(name "IO7"
 						(effects
 							(font
 								(size 1 1)
@@ -788,7 +788,7 @@
 				(pin output line
 					(at -10.16 -12.7 0)
 					(length 2.54)
-					(name "IO15_SERVO5_AUX1"
+					(name "IO15"
 						(effects
 							(font
 								(size 1 1)
@@ -806,7 +806,7 @@
 				(pin output line
 					(at -10.16 -2.54 0)
 					(length 2.54)
-					(name "IO16_SERVO1_AIL"
+					(name "IO16"
 						(effects
 							(font
 								(size 1 1)
@@ -824,7 +824,7 @@
 				(pin output line
 					(at 10.16 5.08 180)
 					(length 2.54)
-					(name "IO17_SERVO6_AUX2"
+					(name "IO17"
 						(effects
 							(font
 								(size 1 1)
@@ -842,7 +842,7 @@
 				(pin output line
 					(at 10.16 2.54 180)
 					(length 2.54)
-					(name "IO18_SERVO7_AUX3"
+					(name "IO18"
 						(effects
 							(font
 								(size 1 1)
@@ -860,7 +860,7 @@
 				(pin bidirectional line
 					(at 10.16 -2.54 180)
 					(length 2.54)
-					(name "IO8_SDA"
+					(name "IO8"
 						(effects
 							(font
 								(size 1 1)
@@ -878,7 +878,7 @@
 				(pin output line
 					(at 10.16 -5.08 180)
 					(length 2.54)
-					(name "IO9_SCL"
+					(name "IO9"
 						(effects
 							(font
 								(size 1 1)
@@ -896,7 +896,7 @@
 				(pin output line
 					(at 10.16 0 180)
 					(length 2.54)
-					(name "IO10_SERVO8_AUX4"
+					(name "IO10"
 						(effects
 							(font
 								(size 1 1)
@@ -914,7 +914,7 @@
 				(pin output line
 					(at 10.16 -7.62 180)
 					(length 2.54)
-					(name "IO11_TR_SW"
+					(name "IO11"
 						(effects
 							(font
 								(size 1 1)
@@ -932,7 +932,7 @@
 				(pin output line
 					(at 10.16 -10.16 180)
 					(length 2.54)
-					(name "IO12_RX_EN"
+					(name "IO12"
 						(effects
 							(font
 								(size 1 1)
@@ -2625,12 +2625,12 @@
 		(uuid "ef5a3005-8d7c-4c97-bb3d-dfdbff2cd642")
 	)
 	(label "VIN_LDO"
-		(at 180 183.77 0)
+		(at 180 183.77 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "06e5c279-a267-4fd7-a4da-c4a56ba9d3fd")
 	)
@@ -2665,22 +2665,22 @@
 		(uuid "12bd1397-2be5-4a9a-b53e-8c4e954b185a")
 	)
 	(label "5V_RAIL"
-		(at 293 226.5 0)
+		(at 293 226.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "1448fc91-1da5-4c57-81b7-4dc65e4a409b")
 	)
 	(label "MIX_IN_P"
-		(at 280 56.77 0)
+		(at 280 56.77 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "17cd22cc-9f4e-4c64-af42-a20632ce0b02")
 	)
@@ -2715,22 +2715,22 @@
 		(uuid "1c71d401-b0c0-4c45-b99b-2a9bb313ee46")
 	)
 	(label "SERVO4_SIG"
-		(at 293 223.96 0)
+		(at 293 223.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "1d7e85d2-296c-4d62-a1c1-347aac3a440f")
 	)
 	(label "GND"
-		(at 293 167.04 0)
+		(at 293 167.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "1e5d8ea0-d0da-47fe-a70a-96b8424643ef")
 	)
@@ -2745,22 +2745,22 @@
 		(uuid "2c2e3f73-242c-48f7-9498-c9ad00ec7a10")
 	)
 	(label "SERVO4_SIG"
-		(at 228 145.01 0)
+		(at 228 145.01 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "30ec73e9-8573-4015-928c-e828535f119a")
 	)
 	(label "VIN_LDO"
-		(at 180 186.31 0)
+		(at 180 186.31 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "3283224d-acff-46c6-9de3-ed324f93f3ba")
 	)
@@ -2785,12 +2785,12 @@
 		(uuid "34ffe3da-03ad-4182-a38f-b097f11a48b7")
 	)
 		(label "5V_RAIL"
-		(at 293 195.5 0)
+		(at 293 195.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "3c4d4bcc-9dc7-4c5f-aef7-9e5c5e41d4d6")
 	)
@@ -2855,32 +2855,32 @@
 		(uuid "407ac0b1-7667-46eb-a082-306e00ba3bcf")
 	)
 	(label "GND"
-		(at 293 229.04 0)
+		(at 293 229.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "40bbecf1-c297-45f8-af42-abd7b221bf02")
 	)
 	(label "GND"
-		(at 80 60.31 0)
+		(at 80 60.31 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "41f6e35d-044a-4a1c-9e4a-6fefdb36ab7e")
 	)
 	(label "SERVO7_SIG"
-		(at 338 192.96 0)
+		(at 338 192.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "4268f558-abbb-421b-b068-23877eb472fa")
 	)
@@ -2915,12 +2915,12 @@
 		(uuid "5f335dfd-5d1f-41a8-94f7-e03f967a3eaf")
 	)
 	(label "MIX_IN_N"
-		(at 280 59.31 0)
+		(at 280 59.31 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "62f6ba06-db5a-4aec-88e7-39a07262ab5a")
 	)
@@ -2955,12 +2955,12 @@
 		(uuid "65e25f33-7670-45fa-a5ea-67afacd83f1d")
 	)
 	(label "5V_RAIL"
-		(at 293 133.5 0)
+		(at 293 133.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "669d7eae-9276-4ad8-bb49-21b9fb2c86b2")
 	)
@@ -2985,12 +2985,12 @@
 		(uuid "686af8c5-4842-4523-86af-2c6934228216")
 	)
 	(label "SERVO5_SIG"
-		(at 228 147.55 0)
+		(at 228 147.55 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "694b4d2d-0701-4dd1-9b87-4d5d2c1c6aa4")
 	)
@@ -3005,22 +3005,22 @@
 		(uuid "6b1a14fb-9f08-4159-8f1e-5f6313cec859")
 	)
 	(label "GND"
-		(at 338 229.04 0)
+		(at 338 229.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "70800c46-fc14-4649-8764-0143d485aafc")
 	)
 	(label "BATT_POS"
-		(at 128 226.77 0)
+		(at 128 226.77 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "71555228-fbe8-42de-944f-4e4b3d06ca40")
 	)
@@ -3045,12 +3045,12 @@
 		(uuid "77d87eaf-2529-40be-837a-a8016df343a3")
 	)
 	(label "GND"
-		(at 128 231.85 0)
+		(at 128 231.85 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "784417b8-9557-4882-a6d9-5316d77871ea")
 	)
@@ -3105,12 +3105,12 @@
 		(uuid "8527e916-021b-42df-8b7e-4e321bc53822")
 	)
 	(label "SERVO6_SIG"
-		(at 338 161.96 0)
+		(at 338 161.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "85fcb46a-fe59-4eb8-83aa-091fc2988b18")
 	)
@@ -3135,32 +3135,32 @@
 		(uuid "8892e52a-62a4-430f-bd63-7aebd7f884e6")
 	)
 	(label "SERVO2_SIG"
-		(at 293 161.96 0)
+		(at 293 161.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "8a9bd588-ba07-4504-b4aa-4f1262b4cd31")
 	)
 	(label "5V_RAIL"
-		(at 293 164.5 0)
+		(at 293 164.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "8c81b012-ee7b-424a-aec0-2e45a73329d4")
 	)
 	(label "5V_RAIL"
-		(at 338 164.5 0)
+		(at 338 164.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "8d34ca12-5440-4f0f-8452-29a936e8fb9b")
 	)
@@ -3205,52 +3205,52 @@
 		(uuid "995f69ad-aeea-4890-8454-28a022b376ef")
 	)
 	(label "SERVO8_SIG"
-		(at 338 223.96 0)
+		(at 338 223.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "9ad82393-dc22-41b6-89ef-1d80829b3705")
 	)
 	(label "RX_EN"
-		(at 280 61.85 0)
+		(at 280 61.85 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "9b439b92-cbee-43ac-bdae-fbb13f1ea4cb")
 	)
 	(label "ESC_POS"
-		(at 128 229.31 0)
+		(at 128 229.31 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "9b8c73b2-ffa5-45b7-8dc0-3608ec116537")
 	)
 	(label "GND"
-		(at 293 198.04 0)
+		(at 293 198.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "9e6a464f-9c93-41bc-b3da-3b248ec0cce3")
 	)
 	(label "RF1_NET"
-		(at 80 62.85 0)
+		(at 80 62.85 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "a1281b7f-ef35-41c6-8299-0c65d01a7781")
 	)
@@ -3275,12 +3275,12 @@
 		(uuid "a4f0a312-e88c-49a6-b459-25d98df54d3a")
 	)
 	(label "SERVO2_SIG"
-		(at 228 139.93 0)
+		(at 228 139.93 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "a5007f95-888e-401f-9386-7cb83b8ce9d2")
 	)
@@ -3305,12 +3305,12 @@
 		(uuid "ab3899ba-d418-43e5-968a-d4be07399255")
 	)
 	(label "5V_RAIL"
-		(at 338 195.5 0)
+		(at 338 195.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "ac438caa-8280-423c-87b4-25b9fe0395a5")
 	)
@@ -3325,12 +3325,12 @@
 		(uuid "ad02c0ce-1e12-4a29-ba26-19afb40a43d8")
 	)
 	(label "MIX_OUT_P"
-		(at 326 59.5 0)
+		(at 326 59.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "ad96b102-c716-445f-89f0-a201e38448bd")
 	)
@@ -3345,22 +3345,22 @@
 		(uuid "b1bb70ff-7edf-4850-8b08-392f3f1069d7")
 	)
 	(label "5V_RAIL"
-		(at 338 226.5 0)
+		(at 338 226.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b31592c1-d425-46d3-a9da-2083899c33b9")
 	)
 	(label "GND"
-		(at 228 132.31 0)
+		(at 228 132.31 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b37a8ad5-b7e5-4d34-ae3b-d681df5b85ce")
 	)
@@ -3405,12 +3405,12 @@
 		(uuid "b81b8a77-2461-474d-af8f-1a75f603d395")
 	)
 	(label "GND"
-		(at 338 167.04 0)
+		(at 338 167.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b8e37004-2059-46e7-aa1e-e74b0c18ac98")
 	)
@@ -3495,12 +3495,12 @@
 		(uuid "c4d134b8-6819-4dab-8b68-1bfba041baf7")
 	)
 	(label "3V3"
-		(at 228 134.85 0)
+		(at 228 134.85 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "c5f946f5-bc37-48d1-b72d-5dcdb62f0c80")
 	)
@@ -3545,12 +3545,12 @@
 		(uuid "cfb86e5b-4e99-46ee-bce0-eb79b61bd1cf")
 	)
 	(label "GND"
-		(at 338 198.04 0)
+		(at 338 198.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "d1023e3c-21e2-4571-944d-614f5cdc5eed")
 	)
@@ -3575,12 +3575,12 @@
 		(uuid "d220d566-c3a2-47a8-868d-7ecd460a7620")
 	)
 		(label "SERVO1_SIG"
-		(at 293 130.96 0)
+		(at 293 130.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "d31932c7-89be-4163-8a25-f7998600b838")
 	)
@@ -3615,22 +3615,22 @@
 		(uuid "d5c4861f-2421-42aa-8bb1-c6bcc0958108")
 	)
 	(label "5V_RAIL"
-		(at 338 133.5 0)
+		(at 338 133.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "d62c2ce6-da56-4eea-ba1f-e40031cd8aa8")
 	)
 	(label "GND"
-		(at 338 136.04 0)
+		(at 338 136.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "d8aebc1c-1ca7-4edd-92e5-b81adebb3e69")
 	)
@@ -3665,12 +3665,12 @@
 		(uuid "dc745548-f450-4949-87e0-3201857f6b4e")
 	)
 	(label "3V3"
-		(at 228 129.77 0)
+		(at 228 129.77 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "e3ba5e9d-e8c8-42c5-a2f2-6dfbbbcb5c14")
 	)
@@ -3685,12 +3685,12 @@
 		(uuid "e4627129-2705-4cb8-820e-d17f10113aa1")
 	)
 	(label "GND"
-		(at 293 136.04 0)
+		(at 293 136.04 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "e4e4e488-0a5b-447e-981a-358bd7a838eb")
 	)
@@ -3725,22 +3725,22 @@
 		(uuid "e919ef77-3bb2-4127-81bd-f461069aee8a")
 	)
 	(label "TELEM_TX_PRE"
-		(at 80 57.77 0)
+		(at 80 57.77 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "e9b29068-1a21-4725-bcfe-7ec6aa0c085a")
 	)
 	(label "SERVO5_SIG"
-		(at 338 130.96 0)
+		(at 338 130.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "ea0d1aee-82a8-4735-baac-945a56a9fd4f")
 	)
@@ -3785,12 +3785,12 @@
 		(uuid "f40de7b2-15f8-4134-8a32-e99f09bd21b2")
 	)
 	(label "LNA_OUT_VCC"
-		(at 183.4 59.5 0)
+		(at 183.4 59.5 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "f607f057-a3b8-4ca1-8a95-4fa1612692f8")
 	)
@@ -3815,12 +3815,12 @@
 		(uuid "f88a59dc-0cd7-40b7-855a-8d40867eec3e")
 	)
 	(label "SERVO3_SIG"
-		(at 228 142.47 0)
+		(at 228 142.47 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "f88c3031-2fe2-40cc-9b5e-0374dce3da50")
 	)
@@ -3865,22 +3865,22 @@
 		(uuid "fb3d719c-92bd-4b5d-841c-e674d2bd3c17")
 	)
 	(label "SERVO1_SIG"
-		(at 228 137.39 0)
+		(at 228 137.39 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "fc473985-0fc4-4532-8bbb-31792037beb8")
 	)
 	(label "SERVO3_SIG"
-		(at 293 192.96 0)
+		(at 293 192.96 180)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "fd4b0d14-b468-406c-ac89-2de6cf96c3a4")
 	)
