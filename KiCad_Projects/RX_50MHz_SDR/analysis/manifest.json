@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "project": "RX_50MHz_SDR.kicad_pro",
+  "current": "2026-09-14_2028",
+  "runs": {
+    "2026-09-14_1736": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:25ccc2822ce332fec28a78da136703432d31c894cb8cf70f1bf68f01fc92d5cd"
+      },
+      "outputs": {
+        "schematic": "schematic.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T17:36:09-05:00",
+      "pinned": false
+    },
+    "2026-09-14_1748": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:cda9225ea8a2e486722bdad408878ebd0a8dd80a7c8f2a2bef33bff4c924ead4"
+      },
+      "outputs": {
+        "schematic": "schematic.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T17:48:11-05:00",
+      "pinned": false
+    },
+    "2026-09-14_1757": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:aa78941ed4c9f633c98c45c80441cee66b42e39422662e28ee93b862357a4102"
+      },
+      "outputs": {
+        "schematic": "schematic.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T17:57:52-05:00",
+      "pinned": false
+    },
+    "2026-09-14_1809": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:1c338f70231cc1e8c378ebdac125557e10c352056f433d8bbfe40eb3c4772dc4"
+      },
+      "outputs": {
+        "schematic": "schematic.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T18:11:29-05:00",
+      "pinned": false
+    },
+    "2026-09-14_1903": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:d4cf669f2c4e1ca1465666b79a3445d16762f6acf22db12ee08308aeef539634",
+        "RX_50MHz_SDR.kicad_pcb": "sha256:b62aa31fb3c6b9df9fdcd36e52cc5b9336f5ec8d641a33f6b60c99448bfd0cc9"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T19:18:06-05:00",
+      "pinned": false
+    },
+    "2026-09-14_2015": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:79de968a3a87809a4407c36788bfb75f7396a4a14ba1de165af9e17bd53d4a94"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T20:15:35-05:00",
+      "pinned": false
+    },
+    "2026-09-14_2026": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:174b1662c34c110459c98e15b0cbf59e027f42ec4db8e71951895ff1d9323075"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T20:26:23-05:00",
+      "pinned": false
+    },
+    "2026-09-14_2028": {
+      "source_hashes": {
+        "RX_50MHz_SDR.kicad_sch": "sha256:8105c53278abab96ad7a6e01bebeb47bf86b8d8a4ed77b036412b7b78e168085"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "schematic": "analyze_schematic.py RX_50MHz_SDR.kicad_sch"
+      },
+      "generated": "2026-09-14T20:28:36-05:00",
+      "pinned": false
+    }
+  }
+}

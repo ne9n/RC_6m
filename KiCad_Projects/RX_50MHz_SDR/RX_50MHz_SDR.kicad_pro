@@ -653,7 +653,7 @@
         "uuid": "e7053744-ac8c-17bc-7683-5b72e2b0eb46"
       }
     ],
-    "used_designators": "U4-5,Q1,Y1",
+    "used_designators": "U4-5,Y1,Q1,C_bgsvdd1,C_ina1,CBULK1",
     "variants": []
   },
   "sheets": [
