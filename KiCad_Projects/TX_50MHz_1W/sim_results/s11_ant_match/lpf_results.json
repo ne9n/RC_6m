@@ -1,0 +1,31 @@
+{
+  "network": "7-pole Pi-LPF: C2-L3-C3-L4-C4-L5-C5, node_in(switch common)->node_out(antenna)",
+  "fix_applied": "removed stray wire (224.79,78.74)-(224.79,73.66) in TX_50MHz_1W.kicad_sch that shorted C3 and grounded the L3/L4 junction",
+  "assumptions": {
+    "Z0": 50,
+    "method": "matched source/load two-port extraction (Vs=1V, Rs=RL=50ohm)"
+  },
+  "minus3dB_cutoff_MHz": 49.140944700000006,
+  "at_10.7MHz": {
+    "freq_hz": 10736921.2,
+    "S11_dB": -6.369810112816659,
+    "S21_dB": -1.1389569016151027,
+    "VSWR": 2.848348738255545
+  },
+  "at_50MHz": {
+    "freq_hz": 49901759.8,
+    "S11_dB": -1.668052870430087,
+    "S21_dB": -4.963109493133608,
+    "VSWR": 10.446392963608563
+  },
+  "at_100MHz": {
+    "freq_hz": 99625864.9,
+    "S11_dB": -7.454487993002083e-07,
+    "S21_dB": -67.62593389472534,
+    "VSWR": 23303785.97757201
+  },
+  "passband_S21_ripple_dB": [
+    -4.963109493133608,
+    -1.2054371991118582e-06
+  ]
+}

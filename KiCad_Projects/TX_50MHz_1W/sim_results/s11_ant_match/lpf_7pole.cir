@@ -1,0 +1,27 @@
+* 7-pole Pi-LPF: U3(switch common) -> antenna J11
+* Corrected topology after removing the stray wire that shorted C3
+* Node_in -- C2(shunt) -- L3(series) -- Node1 -- C3(shunt) -- L4(series)
+*   -- Node2 -- C4(shunt) -- L5(series) -- Node_out -- C5(shunt) -- ANT(J11)
+* Two-port S-parameter extraction via matched source/load method:
+*   Vs=1V AC, Rs=Z0 at input; RL=Z0 at output.
+*   S11 = 2*V(node_in)/Vs - 1 ;  S21 = 2*V(node_out)/Vs
+
+Vs vin 0 AC 1
+Rs vin node_in 50
+
+C2 node_in 0 120p
+L3 node_in node1 180n
+C3 node1 0 220p
+L4 node1 node2 180n
+C4 node2 0 220p
+L5 node2 node_out 180n
+C5 node_out 0 120p
+
+RL node_out 0 50
+
+.control
+ac dec 300 1meg 500meg
+wrdata lpf_raw.txt v(node_in) v(node_out)
+quit
+.endc
+.end

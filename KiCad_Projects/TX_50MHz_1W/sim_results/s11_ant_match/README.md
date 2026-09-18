@@ -1,59 +1,72 @@
-# Antenna pi-match network — S11 sweep (ngspice)
+# TX antenna-side low-pass filter — S11/S21 sweep (ngspice)
 
-Ran on 2026-09-18 against `TX_50MHz_1W.kicad_sch` as a follow-up to the schematic/PCB
-review. Netlist: `ant_pi_match.cir`. Plot: `s11_ant_pi_match.png`. Numeric results at
-the IF/fundamental/2nd-harmonic frequencies: `s11_results.json`.
+## Update 2026-09-18: root cause found and fixed
 
-## What was simulated
+The original analysis below (kept for history) treated L4/C4/L5/C5 as an isolated,
+unconnected 4-element network because the analyzer showed no path from the T/R
+switch's common port to it. That diagnosis was correct about the *symptom* but not
+the cause: it wasn't a missing wire.
 
-The analyzer's `detect_rf_matching` pass flagged **L4/C4/L5/C5** as a pi-match network
-near the antenna connector (J11). Tracing the actual net connectivity in the schematic:
+**Root cause:** `TX_50MHz_1W.kicad_sch` had a stray wire directly connecting C3's two
+pads together `(224.79,78.74)-(224.79,73.66)`, in parallel with a wire from that same
+point down to a GND symbol. That short-circuited C3 *and* dragged the L3/L4 junction
+to GND with it — which is exactly what made the switch-side cluster (U3/C2/L3) and the
+antenna-side cluster (L4/C4/L5/C5) look like two disconnected dead-ends. Removing that
+one wire (plus two now-meaningless junction dots at the same points) reveals the real,
+already-intended topology: a complete **7-pole Pi low-pass filter** from the switch
+common port to the antenna —
 
 ```
-node A --[L4 || C4, both shunt to GND]-- L5 (series) --[C5 shunt to GND]-- node B -- J11 (ANT)
+U3.5 (common) -- C2(120pF) shunt -- L3(180nH) series -- Node1
+  -- C3(220pF) shunt -- L4(180nH) series -- Node2
+  -- C4(220pF) shunt -- L5(180nH) series -- Node_out
+  -- C5(120pF) shunt -- J11 (antenna)
 ```
 
-This was simulated as a standalone 2-port network: a 1A AC current source injected at
-node A to compute `Zin(f)`, with node B terminated in an assumed 50Ω antenna load.
-`S11 = (Zin - 50) / (Zin + 50)`.
+The symmetric value pattern (120pF outer caps / 220pF inner caps / 180nH×3, matching
+the "7-pole LPF" called out in `work_instructions.md`) confirms this was the intended
+design — C3 was never a dead no-op part, it was just shorted out by the stray wire.
 
-**Important caveat found during this review:** node A is not currently wired to
-anything else in the schematic. The T/R switch's common port (U3 pin 5, "RFin") only
-connects to L3/C2 (both wired as dead-end shunt elements to GND), and that net has no
-connection to node A. So as drawn, this network isn't actually in the RF path yet —
-these results describe the network's own response assuming a 50Ω source *would* drive
-node A, not the as-built board. Also note C3 (220pF, sits next to L3/C2) has both pads
-tied to GND — it does nothing electrically and should be re-checked.
+Re-simulated as a proper 2-port network (`lpf_7pole.cir`, matched-source/load method,
+Z0=50Ω both ports): plot is `lpf_7pole_s11_s21.png`, numbers in `lpf_results.json`.
 
-## Results
+### Results (post-fix)
 
-| Frequency | S11 | VSWR |
-|---|---|---|
-| 10.7 MHz (IF) | -1.6 dB | 11.0 |
-| **50 MHz (fundamental, intended TX frequency)** | **-2.5 dB** | **6.9** |
-| 100 MHz (2nd harmonic) | -0.008 dB | 2193 |
-| Best match: **39.6 MHz** | -24.1 dB | 1.13 |
+| Frequency | S11 (return loss) | S21 (insertion loss) | VSWR |
+|---|---|---|---|
+| 10.7 MHz (IF) | -6.4 dB | -1.1 dB | 2.85 |
+| **50 MHz (fundamental)** | **-1.7 dB** | **-5.0 dB** | **10.4** |
+| 100 MHz (2nd harmonic) | ~0 dB | -67.6 dB | very high |
+| -3dB cutoff | — | **49.1 MHz** | — |
 
-The network's actual resonance sits at **~39.6 MHz**, not the board's 50MHz design
-frequency — at 50MHz it presents a poor match (VSWR 6.9:1, meaning roughly half the
-forward power would reflect if this network were actually in the signal path). The
-100MHz point is even worse in absolute terms but VSWR is a red herring there since S11
-is near 0dB by coincidence of the impedance angle, not a good match.
+**The filter now works correctly as a low-pass** — 2nd-harmonic rejection at 100MHz is
+excellent (-67.6dB). But the **-3dB cutoff lands at 49.1MHz, essentially right on top of
+the 50MHz operating frequency**, instead of comfortably above it. That's why S21 at
+50MHz is already down 5dB and S11 is poor (VSWR 10.4:1) — the fundamental sits in the
+filter's roll-off knee, not in its flat passband. Normal part tolerance (5-10% on these
+caps/inductors) could shift the actual cutoff either side of 50MHz unpredictably.
+
+**Recommendation:** scale L3/L4/L5/C2-C5 down slightly to push the cutoff to roughly
+65-75MHz (comfortably above 50MHz, still well below 100MHz) before finalizing the BOM.
 
 ## Assumptions / model fidelity
 
 - Ideal L/C values from the schematic (no ESR/ESL, no PCB parasitics — routing isn't
-  done yet).
-- 50Ω assumed on both the switch-side (node A) and antenna-side (node B) ports. The
-  real antenna and the real T/R switch output impedance haven't been verified against
+  final yet).
+- 50Ω assumed on both the switch-side and antenna-side ports; the real T/R switch
+  output impedance and antenna feedpoint impedance haven't been verified against
   datasheets.
-- This validates the *network's own* frequency response, not the as-wired board (see
-  caveat above).
 
-## Follow-ups this points to
+---
 
-1. Wire the switch common port (U3 pin 5) through to this matching network's input
-   (node A) — currently missing.
-2. Remove or replace C3 (both pads on GND, no-op).
-3. Given the network resonates at ~40MHz rather than 50MHz, re-check the L4/C4/L5/C5
-   values against the intended 50MHz design target before finalizing the BOM.
+## Original analysis (2026-09-18, superseded above)
+
+Kept for history — this treated the antenna-side cluster as an isolated 4-element
+network before the real cause (shorted C3) was found. Netlist: `ant_pi_match.cir`.
+Plot: `s11_ant_pi_match.png`. Numbers: `s11_results.json`.
+
+Original conclusion: "node A is not currently wired to anything else... the network
+resonates at ~39.6MHz rather than 50MHz." The disconnection diagnosis was a downstream
+symptom of the C3 short, not a separate wiring gap — no missing wire needed to be
+added, just the stray short removed. The frequency-placement concern raised there
+carries forward into the corrected result above (cutoff too close to 50MHz).
