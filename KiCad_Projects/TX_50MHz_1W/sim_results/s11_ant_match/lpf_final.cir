@@ -1,0 +1,18 @@
+* Final 7-pole LPF as committed to TX_50MHz_1W.kicad_sch (2026-09-18)
+* C2/C5=82pF, C3/C4=150pF, L3/L4/L5=120nH
+Vs vin 0 AC 1
+Rs vin node_in 50
+C2 node_in 0 82p
+L3 node_in node1 120n
+C3 node1 0 150p
+L4 node1 node2 120n
+C4 node2 0 150p
+L5 node2 node_out 120n
+C5 node_out 0 82p
+RL node_out 0 50
+.control
+ac dec 300 1meg 500meg
+wrdata lpf_final_raw.txt v(node_in) v(node_out)
+quit
+.endc
+.end

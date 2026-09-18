@@ -1225,6 +1225,129 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Kraft6M:C_82pF_0805"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "82pF"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_82pF_0805_0_1"
+				(polyline
+					(pts
+						(xy -0.508 1.27) (xy -0.508 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy 0.508 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.032)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.032)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Kraft6M:C_1uF_0603"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1408,6 +1531,129 @@
 				)
 			)
 			(symbol "C_220pF_0805_0_1"
+				(polyline
+					(pts
+						(xy -0.508 1.27) (xy -0.508 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy 0.508 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.032)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.032)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kraft6M:C_150pF_0805"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "150pF"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_150pF_0805_0_1"
 				(polyline
 					(pts
 						(xy -0.508 1.27) (xy -0.508 -1.27)
@@ -3280,6 +3526,153 @@
 				)
 			)
 			(symbol "L_180nH_0805_0_1"
+				(arc
+					(start -3.175 0)
+					(mid -1.905 1.27)
+					(end -0.635 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -1.905 0)
+					(mid -0.635 1.27)
+					(end 0.635 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.635 0)
+					(mid 0.635 1.27)
+					(end 1.905 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.635 0)
+					(mid 1.905 1.27)
+					(end 3.175 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 1.905)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 1.905)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kraft6M:L_120nH_0805"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "120nH"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Inductor_SMD:L_0805_2012Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "L_120nH_0805_0_1"
 				(arc
 					(start -3.175 0)
 					(mid -1.905 1.27)
@@ -7467,7 +7860,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:C_220pF_0805")
+		(lib_id "Kraft6M:C_150pF_0805")
 		(at 224.79 76.2 90)
 		(unit 1)
 		(body_style 1)
@@ -7487,7 +7880,7 @@
 				)
 			)
 		)
-		(property "Value" "220pF"
+		(property "Value" "150pF"
 			(at 231.14 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7710,7 +8103,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:L_180nH_0805")
+		(lib_id "Kraft6M:L_120nH_0805")
 		(at 257.81 72.39 0)
 		(unit 1)
 		(body_style 1)
@@ -7731,7 +8124,7 @@
 				)
 			)
 		)
-		(property "Value" "180nH"
+		(property "Value" "120nH"
 			(at 257.81 78.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11432,7 +11825,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:L_180nH_0805")
+		(lib_id "Kraft6M:L_120nH_0805")
 		(at 214.63 72.39 0)
 		(unit 1)
 		(body_style 1)
@@ -11453,7 +11846,7 @@
 				)
 			)
 		)
-		(property "Value" "180nH"
+		(property "Value" "120nH"
 			(at 214.63 78.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14381,7 +14774,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:C_120pF_0805")
+		(lib_id "Kraft6M:C_82pF_0805")
 		(at 266.7 78.74 90)
 		(unit 1)
 		(body_style 1)
@@ -14401,7 +14794,7 @@
 				)
 			)
 		)
-		(property "Value" "120pF"
+		(property "Value" "82pF"
 			(at 272.7 78.74 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15076,7 +15469,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:C_120pF_0805")
+		(lib_id "Kraft6M:C_82pF_0805")
 		(at 201.93 74.93 90)
 		(unit 1)
 		(body_style 1)
@@ -15096,7 +15489,7 @@
 				)
 			)
 		)
-		(property "Value" "120pF"
+		(property "Value" "82pF"
 			(at 207.93 74.93 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15231,7 +15624,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:C_220pF_0805")
+		(lib_id "Kraft6M:C_150pF_0805")
 		(at 247.65 74.93 90)
 		(unit 1)
 		(body_style 1)
@@ -15253,7 +15646,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "220pF"
+		(property "Value" "150pF"
 			(at 250.19 76.1999 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16718,7 +17111,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Kraft6M:L_180nH_0805")
+		(lib_id "Kraft6M:L_120nH_0805")
 		(at 234.95 72.39 0)
 		(unit 1)
 		(body_style 1)
@@ -16739,7 +17132,7 @@
 				)
 			)
 		)
-		(property "Value" "180nH"
+		(property "Value" "120nH"
 			(at 234.95 78.39 0)
 			(show_name no)
 			(do_not_autoplace no)

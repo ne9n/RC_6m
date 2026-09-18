@@ -1,6 +1,39 @@
 # TX antenna-side low-pass filter — S11/S21 sweep (ngspice)
 
-## Update 2026-09-18: root cause found and fixed
+## Update 2 (2026-09-18): re-tuned cutoff, values applied to the schematic
+
+The "Update 1" fix below restored a working filter, but its cutoff sat at 49.1MHz —
+right on top of the 50MHz fundamental — so S21 was already down 5dB and S11 was poor
+(VSWR 10.4:1) at the operating frequency. Rescaled the whole ladder by the ratio
+needed to move the cutoff to ~70-73MHz (L_new = L_old × fc_old/fc_new, same for C,
+which preserves the filter shape and 50Ω impedance level), then rounded to standard
+E12 part values:
+
+| Part | Old value | New value |
+|---|---|---|
+| C2, C5 (outer shunt) | 120pF | **82pF** |
+| C3, C4 (inner shunt) | 220pF | **150pF** |
+| L3, L4, L5 (series) | 180nH | **120nH** |
+
+These are now the actual values in `TX_50MHz_1W.kicad_sch` and BOM (three new library
+parts added to `Kraft6M.kicad_sym`: `C_82pF_0805`, `C_150pF_0805`, `L_120nH_0805`).
+Netlist: `lpf_final.cir`. Plot: `lpf_final_s11_s21.png`. Numbers: `lpf_final_results.json`.
+
+### Results (final, as committed)
+
+| Frequency | S11 | S21 | VSWR |
+|---|---|---|---|
+| 10.7 MHz (IF) | -7.5 dB | -0.84 dB | 2.45 |
+| **50 MHz (fundamental)** | **-10.9 dB** | **-0.37 dB** | **1.80** |
+| 100 MHz (2nd harmonic) | ~0 dB | -37.6 dB | very high |
+| -3dB cutoff | — | **73.3 MHz** | — |
+
+50MHz now lands in a local S11 notch with sub-half-dB insertion loss and a good match
+(VSWR 1.8), while still keeping strong 2nd-harmonic rejection (-37.6dB, down from
+-67.6dB pre-retune, but still comfortably enough for spurious-emission requirements).
+This is the current, final result — the "Update 1" numbers below are superseded.
+
+## Update 1 (2026-09-18): root cause found and fixed
 
 The original analysis below (kept for history) treated L4/C4/L5/C5 as an isolated,
 unconnected 4-element network because the analyzer showed no path from the T/R
