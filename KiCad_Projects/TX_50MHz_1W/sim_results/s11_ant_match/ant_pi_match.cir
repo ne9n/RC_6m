@@ -1,0 +1,19 @@
+* Antenna-side pi-match network S11 sweep (L4/C4/L5/C5, per schematic)
+* Node A = would-be switch/PA-side port (assumed Z0=50 ohm reference)
+* Node B = antenna-side node, terminated in assumed 50 ohm antenna load
+* NOTE: node A is not currently wired to U3 pin5 in the schematic (see review).
+.param Z0=50
+
+I1 0 nodeA AC 1
+L4 nodeA 0 180n
+C4 nodeA 0 220p
+L5 nodeA nodeB 180n
+C5 nodeB 0 120p
+RL nodeB 0 50
+
+.control
+ac dec 200 1meg 500meg
+wrdata s11_raw.txt v(nodeA)
+quit
+.endc
+.end
