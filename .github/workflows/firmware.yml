@@ -1,0 +1,77 @@
+name: Firmware
+
+on:
+  push:
+    branches: [main]
+    paths: ["Software/**", ".github/workflows/firmware.yml"]
+  pull_request:
+    paths: ["Software/**", ".github/workflows/firmware.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Native self-tests for the header-only FSK demod cores -- no Arduino/ESP-IDF needed.
+  firmware-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run self-tests
+        working-directory: Software/test
+        run: |
+          set -e
+          for t in *_selftest.cpp; do
+            name="${t%.cpp}"
+            echo "::group::$name"
+            g++ -O2 -std=c++17 -Wall -Wextra -I.. "$t" -o "$name"
+            "./$name"
+            echo "::endgroup::"
+          done
+
+  # Compile every sketch for the ESP32-S3. Software/ holds several .ino files side by side,
+  # which arduino-cli would merge into one sketch, so each gets staged into its own folder.
+  firmware-compile:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sketch:
+          - Kraft_7_Firmware_Skeleton
+          - Kraft_Digital_Encoder_Example
+          - RX_FSK_Demod
+          - RX_FSK_Demod_PLL
+    env:
+      FQBN: esp32:esp32:esp32s3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v2
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.arduino15
+            ~/Arduino/libraries
+          key: arduino-esp32-${{ hashFiles('.github/workflows/firmware.yml') }}
+      - name: Install ESP32 core and libraries
+        run: |
+          arduino-cli config init --overwrite
+          arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+          arduino-cli lib install "Adafruit ADS1X15" "Etherkit Si5351" "U8g2"
+      - name: Stage sketch
+        run: |
+          dir="build/sketches/${{ matrix.sketch }}"
+          mkdir -p "$dir"
+          cp "Software/${{ matrix.sketch }}.ino" "$dir/"
+          cp Software/*.h "$dir/"
+      - name: Compile
+        run: |
+          arduino-cli compile --fqbn "$FQBN" --warnings default \
+            --output-dir "build/bin/${{ matrix.sketch }}" \
+            "build/sketches/${{ matrix.sketch }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.sketch }}
+          path: build/bin/${{ matrix.sketch }}/*.bin
