@@ -27,7 +27,10 @@ This document maps the BOM components to the exact KiCad library footprint names
 | **ESP32-S3-WROOM-1** | `RF_Module:ESP32-S3-WROOM-1-N8` | |
 | **LT5560 Mixer** | `Kraft6M:LT5560` | 2x2mm DFN-8 |
 | **SPF5043Z LNA** | `Kraft6M:SPF5043Z` | |
-| **IF Filter (10.7MHz)**| `Kraft6M:SFE10.7` | Murata SFE Series |
+| **IF Filter (10.7MHz)**| `Kraft6M:SFE10.7` | Superseded -- removed (replaced by the ~169MHz LC BPF) |
+| **Si4463-C2A-GM** | `Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias` | Symbol `RF:Si4463`; also on the TX board (telemetry RX) |
+| **30MHz Crystal (Si4463)** | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` | Si4463 reference |
+| **IF BPF / RX Match** | 0603 L/C (C0G) | ~169MHz LC BPF + AN643 match; values TBD |
 | **AP2112K-3.3** | `Package_TO_SOT_SMD:SOT-23-5` | |
 | **Inductors (Match)** | `Kraft6M:L_220nH_0603` | Specific for LNA match |
 | **Capacitors (Match)** | `Kraft6M:C_100pF_0603` | Specific for RF path |

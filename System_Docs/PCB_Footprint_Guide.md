@@ -11,6 +11,7 @@ This guide provides the specific SMT footprint requirements and soldering advice
 | **ADS1115IDGS** | ADC | `Package_SO:VSSOP-10_3x3mm_P0.5mm` | 0.5mm Pitch | Same footprint as Si5351A |
 | **RD01MUS2** | 1W PA | `Package_TO_SOT_SMD:SOT-89-3` | Thermal Tab | Solder center pad to GND plane |
 | **LT5560EDD** | Mixer | `Package_DFN_QFN:DFN-8-1EP_3x3mm_P0.5mm`| 0.5mm Pitch | Exposed Pad (EP) is critical |
+| **Si4463-C2A-GM** | FSK Receiver | `Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias` | 0.5mm Pitch | EP to GND with vias; 30MHz crystal right next to XIN/XOUT |
 | **SPF5043Z** | LNA | `Package_TO_SOT_SMD:SOT-343` | 1.3mm / 0.65mm | RF Optimized pinout |
 | **AP2112K** | LDO | `Package_TO_SOT_SMD:SOT-23-5` | 0.95mm Pitch | Standard regulator |
 
@@ -25,7 +26,7 @@ To balance ease of hand-soldering with RF performance:
 ---
 
 ## 3. Critical Solder Mask & Stencil Advice
-- **Thermal Pads**: For the **RD01MUS2** and **LT5560**, the center thermal pad MUST be connected to the bottom ground plane using a cluster of 4-9 "Thermal Vias" (0.2mm - 0.3mm diameter).
+- **Thermal Pads**: For the **RD01MUS2**, **LT5560** and **Si4463**, the center thermal pad MUST be connected to the bottom ground plane using a cluster of 4-9 "Thermal Vias" (0.2mm - 0.3mm diameter).
 - **RF Traces**: Do not allow solder mask to cover 50-ohm RF traces if you are doing professional impedance control; however, for 50MHz, standard mask is acceptable.
 - **Solder Paste**: Use **Lead-Free SAC305** or **Leaded Sn63/Pb37** for easiest hand assembly.
 

@@ -9,7 +9,7 @@ This document provides a theoretical analysis of the expected range and reliabil
 | **Transmit Power (Pt)** | +30 dBm (1 Watt) | Output after LPF |
 | **Transmit Antenna Gain (Gt)** | 2.15 dBi | Standard half-wave whip |
 | **Receive Antenna Gain (Gr)** | -3.0 dBi | Shortened wire antenna (compromised) |
-| **Receiver Sensitivity (Pr)** | -105 dBm | Typical for LT5560 + SPF5043Z |
+| **Receiver Sensitivity (Pr)** | -105 dBm | Conservative planning figure for SPF5043Z LNA + LT5560 upconverter + Si4463 receiver (169MHz IF). Keep until measured; Si4463 sensitivity per datasheet, TBD |
 | **Operating Frequency** | 50.1 MHz | 6-meter Ham Band |
 
 ---

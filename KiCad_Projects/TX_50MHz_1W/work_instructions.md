@@ -2,6 +2,57 @@
 
 ## Status
 
+### 📻 Telemetry Receiver — `TX_50MHz_1W.kicad_sch` — ✅ Si4463 chain in schematic, PCB not yet updated (2026-09-28)
+
+The telemetry receive path is now *LT5560 upconverter → ~169MHz LC IF band-pass → Si4463 FSK
+receiver → SPI* (was *LT5560 → 10.7MHz FL1 → ESP32 ADC*). Si5351A CLK1 is a fixed
+**118.2MHz LO on PLLB**; CLK0 stays the FSK carrier on PLLA. Rationale, frequency plan and pin
+tables: `TX_Hardware/TX_Schematic_Blueprint.md` and `RX_Hardware/RX_Design_Details.md`.
+
+Done in the schematic (direct file edit, verified with `kicad-cli` netlist + ERC, no new errors):
+1. FL1 and the `ADC_IN` net deleted; ESP32 **IO10** now has a no-connect flag.
+2. LT5560 (U5): IN-/LO-/OUT- were tied straight to GND → now C27/C28 (100pF) and C29
+   (10nF) AC grounds. OUT+/OUT- get DC feeds L8/L9 (value TBD), OUT+ → C30 → IF band-pass.
+3. SPF5043Z (U4) had no bias feed → L7 1µH RFC from +3V3 (C25 10nF decoupling), and C26
+   100pF DC block into the mixer.
+4. 3-pole LC IF band-pass L10–L12 / C31–C35 (values TBD), placeholder AN643 match C36/L13/C37.
+5. **U13 Si4463-C2A-GM** with Y2 30MHz (3225, 4-pad), C38–C42 decoupling, R13 10k nIRQ pull-up.
+6. SPI + control: **SCLK = IO12, MOSI = IO13, MISO = IO14, nSEL = IO15, nIRQ = IO16, SDN = IO17**.
+7. **ESP32 symbol pad numbers corrected**: IO8/IO9/IO10/IO11 were on pads 11/12/13/14 (really
+   IO18, IO8, USB D-, USB D+) → now 12/17/18/19, in the schematic and in `Kraft6M.kicad_sym`.
+
+**Still to do:**
+- *Update PCB from Schematic* (new parts + changed ESP32 pad nets), then place/route them.
+- Pick values: IF band-pass (SPICE), LT5560 169MHz output feeds, AN643 match topology/values.
+- Unrelated issues seen in the netlist: ADS1115 U7 has SDA/SCL swapped; Q3 base and R9 are
+  unconnected; AP2112K (U10) EN is unconnected.
+- **If KiCad has this project open, close it without saving before reopening** — the change
+  was a direct file edit.
+
+### 🔌 USB Interface — `USB_Interface.kicad_sch` — ✅ Split out + battery charger added (2026-09-21)
+
+The USB-C connector (J12), CP2102N USB-UART bridge (U11), the DTR/RTS auto-reset
+transistors (Q2/Q3, R5–R10), and their decoupling caps (C18–C22) were moved out of the
+top-level TX schematic into their own hierarchical sub-sheet, referenced from the root
+sheet via a `sheet` symbol (Sheetname "USB Interface"). Every net crossing the sheet
+boundary (`USB_DP`, `USB_DM`, `VBUS_5V`, `CC1_NET`, `CC2_NET`, `DTR_SIGNAL`, `RTS_SIGNAL`,
+`EN`, `BOOT_IO0`, `U0TXD`/`U0RXD`, plus `+3V3`/`GND`) was already a global label or power
+symbol, so no sheet pins were needed — the sub-sheet has none.
+
+Added to the sub-sheet: a **USB-C battery charger** (U12, `MCP73831-2-OT`) that takes
+`VBUS_5V` and charges the same `+BATT` net the main pack (J8, XT30) is on, so plugging in
+USB-C tops up whatever battery is connected there. R11 (10k) sets the PROG current to a
+conservative ~100 mA (`Ireg = 1000/R11[kΩ]`) — swap for ~2k (~500 mA) if faster charging of
+a larger pack is wanted. D1 is a charge-status LED (lit while charging, STAT pulled low).
+C23/C24 are the datasheet-recommended 1 µF bypass caps on VDD/VBAT. A `PWR_FLAG` on
+`VBUS_5V` tells ERC that net is driven from outside the schematic (matches the project's
+existing convention elsewhere).
+
+**Still to do:** lay out U12/R11/R12/C23/C24/D1 on the PCB (they only exist in the
+schematic/netlist so far) and re-run ERC/DRC in KiCad. **If KiCad has this project open,
+close it without saving before reopening** — the split was done by direct file edit, and
+saving from the old in-memory (still-flat) schematic would overwrite this change.
+
 ### 📡 Transmitter — `TX_50MHz_1W.kicad_sch` — ✅ Fully wired (2026-09-09)
 
 The TX schematic was rebuilt end-to-end: every symbol now uses its real `Kraft6M:*` library

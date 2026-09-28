@@ -28,11 +28,13 @@ Designing a 50MHz transceiver requires careful attention to grounding, isolation
 ## 4. Receiver (RX) Layout
 - **LNA Proximity**: The SPF5043Z LNA should be placed as close as possible to the RF Switch/Antenna connector.
 - **Shielding**: If possible, leave space for a small SMD "Shield Can" over the LNA and Mixer stage to prevent pickup of noise from the MCU or ESCs.
+- **IF Section (~169MHz)**: Keep the LT5560 output -> LC BPF -> Si4463 match path short and compact, ideally under the same shield can. 169MHz is not a quiet band (land-mobile/paging nearby), so direct pickup on the IF traces is a layout risk; the 50MHz BPF can't reject it.
+- **Si4463**: 30MHz crystal right next to XIN/XOUT, EP stitched to ground, decoupling at both VDD pins. Keep the SPI lines away from the RF/IF path. Applies to both boards (the TX has the same telemetry receiver).
 
 ---
 
 ## 5. Digital Noise Reduction
-- **Clock Generators**: Keep the Si5351A and its 26MHz crystal far away from the LNA input.
+- **Clock Generators**: Keep the Si5351A and its 26MHz crystal far away from the LNA input. The 118.2MHz LO trace to the LT5560 should be short and away from the IF band-pass filter.
 - **I2C Routing**: Route the I2C lines (SDA/SCL) away from the RF path. Use 10k pull-ups and consider adding small 47pF capacitors if digital noise is visible in the RX floor.
 
 ---

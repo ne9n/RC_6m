@@ -6,7 +6,7 @@ This document describes the power distribution system for the aircraft-side rece
 The receiver does not have its own battery. It draws power from the **5V or 6V rail** provided by the Electronic Speed Controller (ESC) or a standalone Battery Eliminator Circuit (BEC) via any of the servo headers.
 
 - **Input Range**: 4.5V to 7.0V (Standard RC Servo Bus).
-- **Current Requirement**: ~150mA (ESP32-S3 + RF stages) + Servo loads.
+- **Current Requirement**: ~150mA (ESP32-S3 + RF stages) + Si4463 RX current (per datasheet, TBD) + Servo loads.
 
 ---
 
@@ -16,7 +16,7 @@ The receiver does not have its own battery. It draws power from the **5V or 6V r
 graph LR
     SERVO[Servo Bus 5V-6V] --> FILT[LC Pi-Filter]
     FILT --> LDO[3.3V LDO AP2112K]
-    LDO --> RF[RF Stages: LNA, Mixer, Synth]
+    LDO --> RF["RF Stages: LNA, Mixer, Synth, Si4463"]
     LDO --> MCU[ESP32-S3]
     SERVO --- SERVOS[Servos: Ail, Ele, Thr, Rud]
     BATT[Flight Battery] --> INA[INA219 Sensor]

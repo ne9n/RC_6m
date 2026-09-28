@@ -15,7 +15,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Battery_Management_Design.md](file:///TX_Hardware/Battery_Management_Design.md): LiPo conversion and USB-C charging for the Kraft case.
 
 ### 🛩️ RX Hardware
-- [RX_Design_Details.md](file:///RX_Hardware/RX_Design_Details.md): Front-end LNA, Mixer, and 10.7MHz IF stage.
+- [RX_Design_Details.md](file:///RX_Hardware/RX_Design_Details.md): Front-end LNA, LT5560 upconverter (118.2MHz LO, ~169MHz IF), and Si4463 FSK receiver.
 - [Receiver_Servo_Design.md](file:///RX_Hardware/Receiver_Servo_Design.md): Servo bus wiring and MCU integration.
 - [RX_PCB_Design_Guide.md](file:///RX_Hardware/RX_PCB_Design_Guide.md): Physical layout, grounding, and stackup for the RX board.
 - [RX_Schematic_Blueprint.md](file:///RX_Hardware/RX_Schematic_Blueprint.md): Pin-to-pin wiring for KiCad schematic entry.
@@ -26,7 +26,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [Kraft_7_Firmware_Skeleton.ino](file:///Software/Kraft_7_Firmware_Skeleton.ino): Full code structure for dual ADC and Si5351 handler.
 - [Firmware_Protocol_Spec.md](file:///Software/Firmware_Protocol_Spec.md): GFSK modulation logic and 50MHz packet structure.
 - [Si5351_GFSK_Driver.cpp](file:///Software/Si5351_GFSK_Driver.cpp): C++ driver for frequency-pulling modulation.
-- [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and SDR logic.
+- [Firmware_Implementation.md](file:///Software/Firmware_Implementation.md): GFSK modulation and Si4463 packet reception over SPI.
 - [Trim_Implementation.md](file:///Software/Trim_Implementation.md): Digital trim logic and math.
 - [Project_Recommendations.md](file:///Software/Project_Recommendations.md): ELRS and SimpleTX project guidance.
 - [Telemetry_Protocol_Design.md](file:///Software/Telemetry_Protocol_Design.md): 2-way 50MHz data packet definition.
@@ -41,7 +41,7 @@ This project focuses on designing and building a modern 50MHz (6-meter) radio co
 - [RF_Range_Analysis.md](file:///C:/radio/System_Docs/RF_Range_Analysis.md): Theoretical range and link budget for 1W on 50MHz.
 - **Datasheets**:
     - [SPF5043Z.pdf](file:///C:/radio/System_Docs/Datasheets/SPF5043Z.pdf): High-performance GaAs pHEMT MMIC LNA (50-4000 MHz).
-    - [Murata_SFE_10.7_Reference.md](file:///C:/radio/System_Docs/Datasheets/Murata_SFE_10.7_Reference.md): Technical specs for the 10.7MHz IF Ceramic Filter.
+    - [Murata_SFE_10.7_Reference.md](file:///C:/radio/System_Docs/Datasheets/Murata_SFE_10.7_Reference.md): Technical specs for the 10.7MHz IF Ceramic Filter. *Superseded (2026-09-28): the 10.7MHz IF was replaced by a ~169MHz IF into an Si4463.*
 - **KiCad Projects**:
     - [TX_50MHz_1W.kicad_sch](file:///C:/radio/KiCad_Projects/TX_50MHz_1W/TX_50MHz_1W.kicad_sch): Main Transmitter Schematic.
     - [RX_50MHz_SDR.kicad_sch](file:///C:/radio/KiCad_Projects/RX_50MHz_SDR/RX_50MHz_SDR.kicad_sch): Main Receiver Schematic.

@@ -15,12 +15,15 @@ This is the initial parts list for the 50MHz digital RC link. It uses modern, ac
 | U7 | [ESP32-S3-WROOM-1](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8/15970878) | Espressif | Airplane RX MCU (Unified with TX) | $4.00 |
 | U8 | [INA219AIDCNR](https://www.digikey.com/en/products/detail/texas-instruments/INA219AIDCNR/2135017) | TI | I2C Current/Power Monitor (Telemetry) | $2.50 |
 | Y1 | [ECS-260-18-33-JGN-TR](https://www.digikey.com/en/products/detail/ecs-inc/ECS-260-18-33-JGN-TR/825413) | ECS Inc. | 26MHz TCXO / Crystal (Frequency Ref) | $1.00 |
+| U9 | Si4463-C2A-GM | Silicon Labs | EZRadioPRO FSK receiver (142-1050MHz), receive-only, QFN-20 -- one per board (RX + TX telemetry) | TBD |
+| Y2 | 30.000MHz crystal (3225, <=+-10ppm preferred) | TBD | Si4463 reference (own crystal, not shared with Si5351A) | TBD |
 
 ## 2. Filters & Passives
 
 | Component | Value / Type | Note |
 | :--- | :--- | :--- |
-| **IF Filter** | 10.7 MHz | Ceramic Filter (Standard SMT or THT) |
+| **IF Filter** | ~169 MHz LC BPF | 3-pole LC band-pass, ~168.75MHz centre, 3-5MHz BW (values TBD). Replaces the 10.7MHz ceramic filter |
+| **Si4463 RX Match** | per Silicon Labs AN643 | Single-ended to RXp/RXn differential match, 169MHz values |
 | **LPF Inductors** | 120nH / 150nH | Wire-wound 0603 High-Q (Murata LQW series) |
 | **PA RFC** | 1.0 uH | High-current inductor (400mA+) for DC feed |
 | **Matching Caps** | C0G/NP0 | RF Grade capacitors (e.g., Murata GJM series) |
@@ -39,4 +42,4 @@ This is the initial parts list for the 50MHz digital RC link. It uses modern, ac
 ### Total Estimated Prototype Cost (Silicon Only): ~$35.00 USD
 
 > [!NOTE]
-> The **LT5560** is used in this BOM as a modern, high-performance replacement for the obsolete SA612. It requires an external LO from the Si5351A but offers significantly better dynamic range and lower noise.
+> The **LT5560** is used in this BOM as a modern, high-performance replacement for the obsolete SA612. It requires an external LO from the Si5351A but offers significantly better dynamic range and lower noise. It now **upconverts** 50MHz to a ~169MHz IF (118.2MHz LO) for the **Si4463** receiver, which does the FSK demodulation in hardware.

@@ -17,8 +17,16 @@ This list contains the core components required to build one 50MHz high-sensitiv
 | Component | Part Number | Description | Qty | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **LNA** | SPF5043Z | Low Noise MMIC Amplifier (0.8dB NF) | 1 | Front-end |
-| **Active Mixer** | LT5560EDD#PBF | Active Mixer (50MHz -> 10.7MHz) | 1 | Down-converter |
-| **IF Filter** | 10.7 MHz | Ceramic Filter (230kHz BW, Murata SFE) | 1 | Selectivity |
+| **Active Mixer** | LT5560EDD#PBF | Active Mixer (50MHz -> ~169MHz IF, LO 118.2MHz) | 1 | Up-converter |
+| **IF Band-Pass** | ~168.75 MHz | 3-pole LC BPF, ~3-5MHz BW, 50 Ohm (values TBD) | 1 set | Rejects LO/RF feedthrough |
+| **FSK Receiver** | Si4463-C2A-GM | EZRadioPRO sub-GHz transceiver, QFN-20 4x4mm, receive-only | 1 | Demod, AFC, sync, RSSI (SPI) |
+| **Crystal (Si4463)** | 30.000 MHz | 3225, <=+-10 ppm preferred (internal load caps) | 1 | Si4463 reference |
+| **Si4463 RX Match** | 169 MHz | Single-ended -> differential match per Silicon Labs AN643 (values TBD) | 1 set | |
+| **Resistor** | 10 kOhm | 0603, Si4463 nIRQ pull-up | 1 | |
+
+*Removed 2026-09-28:* 10.7MHz ceramic IF filter (Murata SFE) and the CD74HC4046A PLL
+discriminator (+ its timing R/C, loop filter and demod RC LPF) -- replaced by the Si4463
+upconversion receiver (see `RX_Design_Details.md`).
 
 ### 2.2 Telemetry Transmitter Stage
 | Component | Part Number | Description | Qty | Note |
@@ -38,7 +46,8 @@ This list contains the core components required to build one 50MHz high-sensitiv
 | **Inductor (RFC)** | 1.0 uH | 0805 Power Inductor (LNA Bias) | 1 | |
 | **Protection** | SS14 | Schottky Diode (Reverse Polarity) | 1 | |
 | **Power Filter** | 10 uH | 0805 Power Inductor (LC Filter) | 1 | |
-| **Decoupling Caps**| 0.1 uF | 0603 X7R (Digital Bypassing) | 10 | |
+| **Decoupling Caps**| 0.1 uF | 0603 X7R (Digital Bypassing) | 12 | +2 for Si4463 VDD |
+| **Decoupling Caps**| 1 uF / 10 pF | 0402 X7R / C0G (Si4463 VDD pins 6, 8) | 2 / 1 | |
 
 ## 4. Total Cost Estimate
 - **Core Silicon**: ~$22.00

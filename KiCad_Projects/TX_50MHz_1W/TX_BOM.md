@@ -13,7 +13,8 @@ This list contains the core components for the 1W Kraft 7 digital conversion.
 | **Display** | 1.3" OLED (SH1106) | I2C 128x64 Monochrome Display | 1 | [Amazon/eBay](https://www.amazon.com/s?k=1.3+inch+OLED+SH1106) |
 | **RF Switch** | BGS12PL6 | SPDT T/R Switch (Telemetry) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/infineon-technologies/BGS12PL6E6327XTSA1/2056263) |
 | **LNA** | SPF5043Z | Low Noise MMIC Amplifier (RX Path) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/qorvo/SPF5043Z/4694406) |
-| **Active Mixer** | LT5560EDD#PBF | Active Mixer (RX Path) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/analog-devices-inc/LT5560EDD-PBF/1590059) |
+| **Active Mixer** | LT5560EDD#PBF | Active Mixer (RX Path, upconverts 50MHz -> ~169MHz IF) | 1 | [DigiKey](https://www.digikey.com/en/products/detail/analog-devices-inc/LT5560EDD-PBF/1590059) |
+| **FSK Receiver** | Si4463-C2A-GM | EZRadioPRO sub-GHz transceiver, QFN-20 4x4mm, used receive-only (telemetry) | 1 | Silicon Labs / DigiKey |
 
 ## 2. RF & Passive Components
 
@@ -26,7 +27,14 @@ This list contains the core components for the 1W Kraft 7 digital conversion.
 | **Capacitor (LPF)** | 220 pF | 0805 C0G/NP0 (7-pole filter) | 2 |
 | **Capacitor (LPF)** | 120 pF | 0805 C0G/NP0 (7-pole filter) | 2 |
 | **RF Choke** | 1.0 uH | 1206 High-Current Inductor (PA Feed) | 1 |
-| **IF Filter** | 10.7 MHz | Ceramic Filter (230kHz BW, Murata SFE) | 1 |
+| **Crystal (Si4463)** | 30.000 MHz | 3225 package, <=+-10 ppm preferred; Si4463 internal load caps | 1 |
+| **IF Band-Pass** | ~168.75 MHz | 3-pole LC BPF, ~3-5MHz BW, 50 Ohm (0402/0603 C0G + wirewound L; values TBD) | 1 set |
+| **Si4463 RX Match** | 169 MHz | Single-ended -> differential LNA match per Silicon Labs AN643 (values TBD) | 1 set |
+| **Resistor (nIRQ pull-up)** | 10 kOhm | 0402/0603, Si4463 nIRQ to 3.3V | 1 |
+| **Decoupling (Si4463)** | 100 nF, 1 uF, 10 pF | 0402 X7R/C0G at VDD pins 6/8 | 2/2/1 |
+
+*Removed 2026-09-28:* 10.7MHz ceramic IF filter (FL1, Murata SFE) -- the telemetry receiver now
+upconverts to ~169MHz and demodulates in an Si4463 (see `TX_Hardware/TX_Schematic_Blueprint.md`).
 
 ## 3. Power & Mechanical
 

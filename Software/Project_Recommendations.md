@@ -20,13 +20,13 @@ ExpressLRS is the industry standard for high-performance RC links. While primari
 - **Repository**: [https://github.com/ExpressLRS/ExpressLRS](https://github.com/ExpressLRS/ExpressLRS)
 - **Application for 50MHz**:
     - Use the **CRSF Protocol** to pass data between the Encoder task and the RF task.
-    - Adapt the ELRS **Packet Framing** (Preamble, Sync, Payload, CRC) for the Si5351A FSK modulation.
+    - Adapt the ELRS **Packet Framing** (Preamble, Sync, Payload, CRC) for the Si5351A FSK modulation, within what the **Si4463** receiver's packet handler can decode (>=5-byte `0x55` preamble, `0x1D4A` sync, NRZ, fixed length -- see `Firmware_Protocol_Spec.md`).
     - Leverage ELRS **Telemetry** code to display airplane battery voltage on the Kraft's OLED.
 
 ## 3. Recommended Workflow
 1. **Fork SimpleTX**: Adapt it to run on the ESP32-S3 and read the 16-bit ADS1115.
 2. **Integrate CRSF**: Configure SimpleTX to output a 420kbaud CRSF serial stream internally.
-3. **RF Driver**: Write a dedicated task that listens to the CRSF stream and bit-bangs the Si5351A frequency registers at 50.8MHz.
+3. **RF Driver**: Write a dedicated task that listens to the CRSF stream and bit-bangs the Si5351A frequency registers at 50.8MHz, and receives telemetry from the Si4463 over SPI (`si4463_radio.h`).
 
 ---
 *Reference: Open source RC development community.*

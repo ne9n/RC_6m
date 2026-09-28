@@ -19,10 +19,19 @@ graph LR
     LPF <--> ANT[Antenna]
     SW -- RX Path --> LNA[SPF5043Z LNA]
     LNA --> MIX[LT5560 Mixer]
-    SI -- CLK1 --> MIX
-    MIX --> IF[10.7MHz IF Filter]
-    IF --> ESP
+    SI -- "CLK1 LO 118.2MHz" --> MIX
+    MIX --> IF["169MHz LC IF BPF"]
+    IF --> MATCH["AN643 RX Match"]
+    MATCH --> SI44["Si4463 FSK Receiver"]
+    SI44 -- SPI --> ESP
 ```
+
+> **Telemetry receiver revised 2026-09-28:** the 10.7MHz IF filter -> ESP32 ADC path is replaced
+> by upconversion to a ~169MHz IF (IF = RF + LO, LO fixed at 118.2MHz) and an **Si4463-C2A-GM**
+> FSK receiver on SPI. See `RX_Hardware/RX_Design_Details.md` for the rationale and frequency
+> plan -- the TX board's telemetry receiver is the same chain as the RX board's. The KiCad
+> schematic carries this chain as of 2026-09-28; the PCB is not yet updated (see
+> `KiCad_Projects/TX_50MHz_1W/work_instructions.md`).
 
 ---
 
@@ -38,7 +47,11 @@ graph LR
 | 3 | XB | 26MHz Crystal | |
 | 4 | SCL | ESP32 GPIO 9 | I2C Bus |
 | 5 | SDA | ESP32 GPIO 8 | I2C Bus |
-| 6 | CLK0 | To PA Input (via 10nF) | RF Drive |
+| 6 | CLK0 | To PA Input (via 10nF) | RF Drive (FSK carrier, **PLLA**) |
+| 7 | CLK1 | To LT5560 Pin 7 (LO+) | **118.200 MHz fixed LO on PLLB** (PLL 709.2MHz, MS /6) |
+
+CLK0 and CLK1 must be on **separate PLLs** so the I2C frequency steps that make the FSK on
+CLK0 never disturb the telemetry-receive LO on CLK1.
 
 ### 2.2 Power Amplifier (PA)
 **IC: RD01MUS2 (SOT-89)**
@@ -68,9 +81,39 @@ graph LR
 | :--- | :--- | :--- | :--- |
 | **LNA In** | SPF5043Z Pin 1| From Switch RF2 | 50MHz Input |
 | **Mixer RF**| LT5560 Pin 1 | From LNA Output | |
-| **Mixer LO**| LT5560 Pin 7 | From Si5351A CLK1 | Local Oscillator |
-| **Mixer IF**| LT5560 Pin 5 | To 10.7MHz Filter | IF Output |
-| **Filter Out**| 10.7MHz SFE | To ESP32 ADC | |
+| **Mixer LO**| LT5560 Pin 7 | From Si5351A CLK1 | Local Oscillator, 118.2MHz fixed |
+| **Mixer IF**| LT5560 Pin 5 | To 169MHz IF BPF | IF = RF + LO (168.3-169.2MHz); output network tuned for 169MHz, both outputs need a DC path to VCC |
+| **IF BPF** | 3-pole LC | To Si4463 RX match | Centre ~168.75MHz, ~3-5MHz BW, 50 Ohm; values TBD (SPICE) |
+| **RX Match** | AN643 network | To Si4463 RXp/RXn | Single-ended -> differential LNA match, 169MHz values |
+| **Receiver** | Si4463 | SPI to ESP32 | Replaces the 10.7MHz SFE filter (FL1) -> ESP32 ADC (IO10 `ADC_IN`) path |
+
+Frequency hopping on receive is done by the Si4463 channel number; the LO stays fixed.
+
+### 2.4a Telemetry FSK Receiver
+**IC: Si4463-C2A-GM (QFN-20 4x4mm + EP)** -- KiCad `RF:Si4463`, footprint
+`Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias`. Receive-only.
+
+| Pin | Name | Connection | Note |
+| :--- | :--- | :--- | :--- |
+| 1 | SDN | ESP32 GPIO 17 (SI_SDN) | High = shutdown; drive low to run |
+| 2 | RXp | From IF BPF via AN643 match | |
+| 3 | RXn | From IF BPF via AN643 match | |
+| 4 | TX | Not Connected | Receive-only, never enter TX state |
+| 5 | NC | Not Connected | |
+| 6, 8 | VDD | 3.3V Rail | 100nF + 1uF each (+10pF at pin 8) |
+| 7 | TXRAMP | Not Connected | |
+| 9 | GPIO0 | Test point (optional RX_STATE) | |
+| 10 | GPIO1 | Optional CTS | Can poll CTS over SPI instead |
+| 11 | nIRQ | ESP32 GPIO 16 (SI_nIRQ) | Open-drain, 10k pull-up to 3.3V |
+| 12 | SCLK | ESP32 GPIO 12 | SPI SCK (GPIO matrix), <=10MHz, mode 0 |
+| 13 | SDO | ESP32 GPIO 14 | SPI MISO |
+| 14 | SDI | ESP32 GPIO 13 | SPI MOSI |
+| 15 | nSEL | ESP32 GPIO 15 | SPI CS |
+| 16, 17 | XOUT, XIN | 30.000MHz Crystal | Internal tunable load caps; no external caps |
+| 18, EP | GND | Ground Plane | Via-stitch the exposed pad |
+
+TX-board SPI pins are **proposed** (IO10 = old `ADC_IN`, IO11 = T/R switch CTRL are taken by the
+current netlist; IO10 is freed once the ADC path is removed) -- confirm against the schematic.
 
 ### 2.5 Precision ADC (Main Sticks)
 **IC: ADS1115 (VSSOP-10) - Address 0x48**
@@ -148,7 +191,7 @@ graph LR
 | :--- | :--- | :--- | :--- |
 | **V_BATT** | 7.4V - 9.6V | 2S/3S LiPo | PA Drain (RFC) |
 | **5V** | 5.0V | Buck Converter | ESP32 Vin |
-| **3.3V** | 3.3V | ESP32 Regulator | ADS1115, OLED, Si5351A |
+| **3.3V** | 3.3V | ESP32 Regulator | ADS1115, OLED, Si5351A, LT5560, Si4463 |
 
 ---
 *Created for the Kraft 7 "Restomod" Project.*

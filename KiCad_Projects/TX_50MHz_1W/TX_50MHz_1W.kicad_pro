@@ -660,6 +660,10 @@
     [
       "d09f74c9-7d1d-1ed1-03a7-fa9af5797810",
       "TX_50MHz_1W"
+    ],
+    [
+      "2fb4172f-7501-4f9b-8a33-38fedaf7d5ae",
+      "USB Interface"
     ]
   ],
   "text_variables": {},

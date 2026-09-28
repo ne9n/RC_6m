@@ -14,7 +14,7 @@ This document provides technical guidance for laying out the custom 50MHz receiv
 
 ## 2. PCB Stackup (4-Layer Recommended)
 RF sensitivity at 50MHz requires a stable ground reference.
-- **Layer 1 (Top)**: RF signal traces, LNA, Mixer, and IF Filter.
+- **Layer 1 (Top)**: RF signal traces, LNA, Mixer, 169MHz IF band-pass and Si4463.
 - **Layer 2 (Internal)**: **Solid Ground Plane** (No signal traces).
 - **Layer 3 (Internal)**: Power Planes (3.3V for ESP32, 5V for Servos).
 - **Layer 4 (Bottom)**: Ground Plane and low-speed digital signals (PWM).
@@ -33,7 +33,14 @@ To maximize sensitivity, the board must be split into three distinct zones:
 ### 3.2 Zone B: IF & LO (Frequency Synthesis)
 - Place the **Si5351A** and its 26MHz crystal in the center.
 - Route the LO signal to the Mixer using a short, impedance-controlled trace.
-- The **10.7MHz Ceramic Filter** should be placed immediately after the Mixer output.
+- The **169MHz LC IF band-pass** goes immediately after the Mixer output, then the AN643 match
+  straight into the **Si4463** RXp/RXn pins. Keep this whole IF section **compact and shielded**
+  (can footprint or via-fenced pour): 169MHz is not a clear band, so direct IF pickup is a layout
+  problem, not a frequency-plan one.
+- Place the Si4463's **30MHz crystal** right against XIN/XOUT (pins 17/16), with no traces routed
+  under it, and keep it away from the Si5351A crystal and LO trace.
+- The Si4463 **exposed pad is its main ground**: via-stitch it (thermal-via footprint) directly to
+  the Layer 2 plane.
 
 ### 3.3 Zone C: Digital & Servos (High Current)
 - Place the **ESP32-S3** at the far end of the board, away from the LNA.
@@ -62,8 +69,9 @@ graph TD
         ANT["ANT PAD"] --- LNA["SPF5043Z"]
         LNA --- MIX["LT5560"]
         SI["Si5351A"] --- MIX
-        MIX --- FILT["10.7MHz Filter"]
-        FILT --- MCU["ESP32-S3"]
+        MIX --- FILT["169MHz IF BPF"]
+        FILT --- SI44["Si4463 (shielded IF)"]
+        SI44 -- "SPI" --- MCU["ESP32-S3"]
         MCU --- SERVO["Servo Header Row"]
     end
 ```
