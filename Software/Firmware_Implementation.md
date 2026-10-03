@@ -6,6 +6,9 @@ This document provides example code and logic for implementing FSK modulation on
 
 The Si5351A does not have a native "FSK" pin. We achieve modulation by rapidly updating the frequency registers over I2C.
 
+### Deferred issue: complete and verify TX FSK
+- [ ] Fix the deviation units in `Si5351_GFSK_Driver.cpp` (currently ±500 kHz instead of the documented ±5 kHz), implement packet transmission in `transmitFrame()` including preamble/sync/CRC, and decide whether Gaussian shaping is required; the current bit switching is 2FSK, not GFSK.
+
 ### Example Code (C++/Arduino)
 ```cpp
 #include <si5351.h>

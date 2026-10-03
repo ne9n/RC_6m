@@ -530,6 +530,7 @@
       "netlist": "TX_50MHz_1W.net",
       "plot": "",
       "specctra_dsn": "",
+      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -620,10 +621,10 @@
       "default_text_size": 50.0,
       "field_names": [],
       "hop_over_size_choice": 0,
-      "intersheets_ref_own_page": false,
+      "intersheets_ref_own_page": true,
       "intersheets_ref_prefix": "",
-      "intersheets_ref_short": false,
-      "intersheets_ref_show": false,
+      "intersheets_ref_short": true,
+      "intersheets_ref_show": true,
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
       "label_size_ratio": 0.375,
@@ -664,6 +665,18 @@
     [
       "2fb4172f-7501-4f9b-8a33-38fedaf7d5ae",
       "USB Interface"
+    ],
+    [
+      "b27d6299-d178-4c73-8e22-38e4cac724be",
+      "Telemetry IF"
+    ],
+    [
+      "84201dc0-63d7-4a97-8257-78bf81ef6c57",
+      "Controller + TX RF"
+    ],
+    [
+      "e9358d38-2b65-4fe6-91c4-bdaaf2825a9d",
+      "Battery + Power"
     ]
   ],
   "text_variables": {},

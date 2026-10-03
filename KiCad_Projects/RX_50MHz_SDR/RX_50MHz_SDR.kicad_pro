@@ -530,6 +530,7 @@
       "netlist": "RX_50MHz_SDR.net",
       "plot": "",
       "specctra_dsn": "",
+      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -653,13 +654,25 @@
         "uuid": "e7053744-ac8c-17bc-7683-5b72e2b0eb46"
       }
     ],
-    "used_designators": "U4-5,Y1,Q1,C_bgsvdd1,C_ina1,CBULK1",
+    "used_designators": "U4-5,Q1,Y1,C_bgsvdd1,C_ina1,CBULK1",
     "variants": []
   },
   "sheets": [
     [
       "e7053744-ac8c-17bc-7683-5b72e2b0eb46",
       "RX_50MHz_SDR"
+    ],
+    [
+      "3fe359b4-6356-43c7-a067-1dd4561c012a",
+      "Controller - I/O"
+    ],
+    [
+      "d79074dc-dec8-4788-a874-ba578c3d41d4",
+      "RF Front End"
+    ],
+    [
+      "def90e17-c4bf-4ae3-b35b-82107105c201",
+      "IF Radio"
     ]
   ],
   "text_variables": {},
