@@ -622,7 +622,7 @@
       "field_names": [],
       "hop_over_size_choice": 0,
       "intersheets_ref_own_page": true,
-      "intersheets_ref_prefix": "",
+      "intersheets_ref_prefix": "page",
       "intersheets_ref_short": true,
       "intersheets_ref_show": true,
       "intersheets_ref_suffix": "",
